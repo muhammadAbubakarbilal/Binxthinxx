@@ -11,7 +11,7 @@ export default function Services() {
       gradient: 'from-burnt-orange to-faded-rust',
       includes: [
         '6 deep-dive coaching sessions',
-        'Guided journaling prompts', 
+        'Guided journaling prompts',
         'Voice note support between sessions',
         'Shadow work exercises'
       ],
@@ -24,7 +24,7 @@ export default function Services() {
       title: '1:1 COACHING',
       tagline: 'Intimate transformation journey',
       from: 'Fragmented',
-      to: 'Integrated', 
+      to: 'Integrated',
       gradient: 'from-ink-blue to-forest-green',
       includes: [
         'Bi-weekly 90-minute sessions',
@@ -78,7 +78,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Intro */}
         <div className="relative mb-20 p-16 rounded-xl overflow-hidden">
-          <div 
+          <div
             className="absolute inset-0 bg-gradient-to-r from-forest-green/90 to-forest-green/70"
             style={{
               backgroundImage: "url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=800')",
@@ -116,7 +116,7 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-forest-green mb-6 leading-relaxed">
+                  <p className="text-forest-green dark:text-gray-300 mb-6 leading-relaxed">
                     <strong>Perfect for:</strong> {program.perfectFor}
                   </p>
 

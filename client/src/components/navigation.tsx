@@ -74,7 +74,7 @@ export default function Navigation() {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Book Now Button */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -160,7 +160,7 @@ export default function Navigation() {
                   </Link>
                 </motion.div>
               ))}
-              
+
               {/* Mobile Book Now Button */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}

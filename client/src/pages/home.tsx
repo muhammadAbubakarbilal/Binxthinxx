@@ -49,7 +49,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Video Carousel */}
         <VideoCarousel />
-        
+
         {/* Overlay for text readability */}
         <motion.div 
           className="absolute inset-0 bg-gradient-to-r from-ink-blue/70 via-ink-blue/40 to-transparent z-20"
@@ -97,7 +97,7 @@ export default function Home() {
                 {heroSubtitle.characters.map((char, index) => (
                   <motion.span
                     key={index}
-                    variants={heroSubtitle.characterVariants}
+                    variants={subtitle.characterVariants}
                     className="inline-block"
                   >
                     {char === ' ' ? '\u00A0' : char}
@@ -107,7 +107,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p 
-              className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed font-lora"
+              className="text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto leading-relaxed font-lora"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5 }}
@@ -135,7 +135,7 @@ export default function Home() {
                   Book Your Journey
                 </motion.button>
               </Link>
-              
+
               <Link href="/contact">
                 <motion.button 
                   className="interactive border-2 border-white/50 hover:border-white text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
@@ -199,19 +199,19 @@ export default function Home() {
                   >
                     <i className={`${service.icon} text-white text-2xl`}></i>
                   </motion.div>
-                  
+
                   <h3 className="font-playfair font-bold text-xl text-ink-blue dark:text-candlelight-beige mb-2">
                     {service.title}
                   </h3>
-                  
+
                   <p className="text-burnt-orange font-lora italic text-sm mb-3">
                     {service.tagline}
                   </p>
-                  
-                  <p className="text-forest-green dark:text-forest-green/80 mb-6 leading-relaxed">
+
+                  <p className="text-forest-green dark:text-gray-300 mb-6 leading-relaxed">
                     {service.description}
                   </p>
-                  
+
                   <Link href={
                     service.id === 'wildroot-intensive' ? '/booking-wildroot' :
                     service.id === 'one-on-one-coaching' ? '/booking-coaching' :

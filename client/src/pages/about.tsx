@@ -87,7 +87,7 @@ export default function About() {
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                 />
               </motion.div>
-              
+
               <motion.h3 
                 className="font-playfair font-bold text-xl text-ink-blue dark:text-candlelight-beige mb-4"
                 initial={{ opacity: 0, y: 20 }}
@@ -96,9 +96,9 @@ export default function About() {
               >
                 {step.title}
               </motion.h3>
-              
+
               <motion.p 
-                className="text-forest-green dark:text-forest-green/80 leading-relaxed"
+                className="text-forest-green dark:text-gray-300 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.1 }}

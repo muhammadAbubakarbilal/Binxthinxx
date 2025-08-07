@@ -124,7 +124,7 @@ export default function TestimonialSlider() {
                         <p className="font-semibold text-ink-blue dark:text-candlelight-beige">
                           {testimonial.author}
                         </p>
-                        <p className="text-forest-green dark:text-forest-green/80 text-sm">
+                        <p className="text-forest-green dark:text-gray-400 text-sm">
                           {testimonial.role}
                         </p>
                       </motion.div>
