@@ -3,7 +3,7 @@ import { Link } from "wouter";
 export default function Services() {
   const programs = [
     {
-      id: 'wildroot',
+      id: 'wildroot-intensive',
       title: 'WILDROOT',
       tagline: 'Return to your inner wilderness',
       from: 'Performer',
@@ -16,11 +16,11 @@ export default function Services() {
         'Shadow work exercises'
       ],
       perfectFor: 'Those craving self-belonging and ready to release the exhausting performance of being who they think they should be.',
-      ctaText: 'Join Waitlist',
-      ctaLink: '/contact'
+      ctaText: 'Book Now',
+      ctaLink: '/booking'
     },
     {
-      id: 'coaching',
+      id: 'one-on-one-coaching',
       title: '1:1 COACHING',
       tagline: 'Intimate transformation journey',
       from: 'Fragmented',
@@ -33,8 +33,8 @@ export default function Services() {
         'Custom resource library'
       ],
       perfectFor: 'Those ready for deep, sustained transformation with personalized support and accountability.',
-      ctaText: 'Book Discovery Call',
-      ctaLink: '/contact'
+      ctaText: 'Book Now',
+      ctaLink: '/booking'
     },
     {
       id: 'shadow-lounge',
@@ -50,8 +50,8 @@ export default function Services() {
         'Shadow work toolkit'
       ],
       perfectFor: 'Those ready to reclaim disowned parts of themselves in a safe, supportive group setting.',
-      ctaText: 'Learn More',
-      ctaLink: '/contact'
+      ctaText: 'Book Now',
+      ctaLink: '/booking'
     },
     {
       id: 'sunday-reset',
@@ -67,8 +67,8 @@ export default function Services() {
         'Monthly live Q&A sessions'
       ],
       perfectFor: 'Those wanting to cultivate weekly practices that anchor you in authenticity and intention.',
-      ctaText: 'Join Community',
-      ctaLink: '/contact',
+      ctaText: 'Book Now',
+      ctaLink: '/booking',
       hasVideo: true
     }
   ];
