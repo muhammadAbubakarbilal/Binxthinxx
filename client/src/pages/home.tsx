@@ -123,7 +123,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 2 }}
             >
-              <Link href="/contact">
+              <Link href="/booking">
                 <motion.button 
                   className="cta-pulse interactive bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
                   whileHover={{ 
@@ -132,11 +132,11 @@ export default function Home() {
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Book Your Discovery Call
+                  Book Your Journey
                 </motion.button>
               </Link>
               
-              <Link href="/services">
+              <Link href="/contact">
                 <motion.button 
                   className="interactive border-2 border-white/50 hover:border-white text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
                   whileHover={{ 
@@ -145,7 +145,7 @@ export default function Home() {
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Explore the Process
+                  Discovery Call
                 </motion.button>
               </Link>
             </motion.div>
@@ -212,13 +212,13 @@ export default function Home() {
                     {service.description}
                   </p>
                   
-                  <Link href="/services">
+                  <Link href="/booking">
                     <motion.button 
                       className="interactive bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 w-full"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      Learn More
+                      Book Now
                     </motion.button>
                   </Link>
                 </div>

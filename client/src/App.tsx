@@ -12,6 +12,10 @@ import About from "@/pages/about";
 import Services from "@/pages/services";
 import Testimonials from "@/pages/testimonials";
 import Contact from "@/pages/contact";
+import Booking from "@/pages/booking";
+import Pricing from "@/pages/pricing";
+import Payment from "@/pages/payment";
+import BookingSuccess from "@/pages/booking-success";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,6 +27,10 @@ function Router() {
         <Route path="/services" component={Services} />
         <Route path="/testimonials" component={Testimonials} />
         <Route path="/contact" component={Contact} />
+        <Route path="/booking" component={Booking} />
+        <Route path="/pricing" component={Pricing} />
+        <Route path="/payment" component={Payment} />
+        <Route path="/booking-success" component={BookingSuccess} />
         <Route component={NotFound} />
       </Switch>
     </PageTransition>

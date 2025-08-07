@@ -75,6 +75,23 @@ export default function Navigation() {
               ))}
             </div>
             
+            {/* Book Now Button */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+            >
+              <Link href="/booking">
+                <motion.button
+                  className="interactive bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Book Now
+                </motion.button>
+              </Link>
+            </motion.div>
+
             {/* Theme Toggle */}
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
@@ -143,6 +160,23 @@ export default function Navigation() {
                   </Link>
                 </motion.div>
               ))}
+              
+              {/* Mobile Book Now Button */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 * navLinks.length, duration: 0.3 }}
+                className="pt-2"
+              >
+                <Link href="/booking" onClick={() => setIsMobileMenuOpen(false)}>
+                  <motion.div
+                    className="interactive bg-burnt-orange hover:bg-burnt-orange/90 text-white px-3 py-2 rounded-lg font-medium transition-all duration-300 text-center"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Book Now
+                  </motion.div>
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
