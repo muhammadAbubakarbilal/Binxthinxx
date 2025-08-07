@@ -41,26 +41,17 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero Section - Enhanced with Advanced Animations */}
+      {/* Hero Section with Background Video Carousel */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Animated Background Image with Parallax Effect */}
+        {/* Background Video Carousel */}
+        <VideoCarousel />
+        
+        {/* Overlay for text readability */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-ink-blue/80 to-transparent z-10"
+          className="absolute inset-0 bg-gradient-to-r from-ink-blue/70 via-ink-blue/40 to-transparent z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
-        />
-        
-        <motion.div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1494790108755-2616c95aa9c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
         />
 
         {/* Candlelight Flicker Effect */}
@@ -79,7 +70,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             {/* Character-by-Character Title Animation */}
             <motion.h1 
@@ -149,8 +140,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Carousel - Therapist Sessions */}
-      <VideoCarousel />
+
 
       {/* Testimonial Slider */}
       <TestimonialSlider />
