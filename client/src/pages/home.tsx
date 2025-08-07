@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import TestimonialSlider from "@/components/testimonial-slider";
+import VideoCarousel from "@/components/video-carousel";
 import { ScrollAnimation, StaggerContainer, useTextReveal } from "@/components/scroll-animations";
 
 export default function Home() {
@@ -147,6 +148,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Video Carousel - Therapist Sessions */}
+      <VideoCarousel />
 
       {/* Testimonial Slider */}
       <TestimonialSlider />
