@@ -1,10 +1,14 @@
+
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { ArrowLeft, CreditCard, Lock, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, CreditCard, Lock, CheckCircle, AlertCircle } from "lucide-react";
 
 interface BookingData {
   name: string;
@@ -23,14 +27,26 @@ export default function Payment() {
   const [bookingData, setBookingData] = useState<BookingData | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentComplete, setPaymentComplete] = useState(false);
+  const [paymentForm, setPaymentForm] = useState({
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+    nameOnCard: "",
+    billingAddress: "",
+    city: "",
+    zipCode: ""
+  });
   const { toast } = useToast();
 
   useEffect(() => {
     const storedData = sessionStorage.getItem('bookingData');
     if (storedData) {
       setBookingData(JSON.parse(storedData));
+    } else {
+      // Redirect to services if no booking data
+      setLocation('/services');
     }
-  }, []);
+  }, [setLocation]);
 
   const handleBack = () => {
     const params = new URLSearchParams();
@@ -40,14 +56,15 @@ export default function Payment() {
     setLocation(`/pricing?${params.toString()}`);
   };
 
-  const handlePayment = async () => {
+  const handlePayment = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (!bookingData) return;
 
     setIsProcessing(true);
 
     try {
       // Simulate payment processing
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 3000));
 
       // Mock successful payment
       setPaymentComplete(true);
@@ -63,27 +80,25 @@ export default function Payment() {
       // Redirect to success page after a delay
       setTimeout(() => {
         setLocation('/booking-success');
-      }, 3000);
-
+      }, 2000);
     } catch (error) {
       toast({
         title: "Payment Failed",
         description: "There was an issue processing your payment. Please try again.",
         variant: "destructive",
       });
-    } finally {
       setIsProcessing(false);
     }
   };
 
   if (!bookingData) {
     return (
-      <div className="min-h-screen bg-candlelight-beige flex items-center justify-center px-6">
+      <div className="min-h-screen bg-candlelight-beige flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-serif text-3xl text-ink-blue mb-4">No Booking Found</h1>
-          <p className="text-forest-green mb-6">Please complete the booking form first.</p>
-          <Button onClick={() => setLocation('/booking')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-white">
-            Start Booking
+          <p className="text-forest-green mb-6">Please start a new booking.</p>
+          <Button onClick={() => setLocation('/services')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-white">
+            View Services
           </Button>
         </div>
       </div>
@@ -93,21 +108,18 @@ export default function Payment() {
   if (paymentComplete) {
     return (
       <div className="min-h-screen bg-candlelight-beige flex items-center justify-center px-6">
-        <div className="text-center max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
-          <h1 className="font-serif text-4xl text-ink-blue mb-4">Payment Successful!</h1>
-          <p className="text-xl text-forest-green mb-6">
-            Your booking for <strong>{bookingData.serviceName}</strong> has been confirmed.
-          </p>
-          <p className="text-forest-green mb-8">
-            You will receive a confirmation email shortly with all the details and next steps.
-          </p>
-          <Button onClick={() => setLocation('/')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-white">
-            Return to Home
-          </Button>
-        </div>
+          <h1 className="font-serif text-3xl text-ink-blue mb-4">Payment Successful!</h1>
+          <p className="text-forest-green mb-6">Your booking has been confirmed. Redirecting...</p>
+        </motion.div>
       </div>
     );
   }
@@ -149,126 +161,171 @@ export default function Payment() {
 
                   <Separator />
 
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <h4 className="font-medium text-ink-blue">Contact Information</h4>
-                    <div className="space-y-1 text-forest-green">
-                      <p><strong>Name:</strong> {bookingData.name}</p>
-                      <p><strong>Email:</strong> {bookingData.email}</p>
-                      {bookingData.phone && <p><strong>Phone:</strong> {bookingData.phone}</p>}
-                    </div>
+                    <p className="text-forest-green"><strong>Name:</strong> {bookingData.name}</p>
+                    <p className="text-forest-green"><strong>Email:</strong> {bookingData.email}</p>
+                    {bookingData.phone && <p className="text-forest-green"><strong>Phone:</strong> {bookingData.phone}</p>}
                   </div>
 
                   <Separator />
 
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <h4 className="font-medium text-ink-blue">Session Details</h4>
-                    <div className="space-y-1 text-forest-green">
-                      <p><strong>Preferred Date:</strong> {new Date(bookingData.preferredDate).toLocaleDateString()}</p>
-                      <p><strong>Time Slot:</strong> {bookingData.timeSlot}</p>
-                      {bookingData.notes && (
-                        <div>
-                          <strong>Notes:</strong>
-                          <p className="mt-1 italic">{bookingData.notes}</p>
-                        </div>
-                      )}
-                    </div>
+                    <p className="text-forest-green"><strong>Date:</strong> {new Date(bookingData.preferredDate).toLocaleDateString()}</p>
+                    <p className="text-forest-green"><strong>Time:</strong> {bookingData.timeSlot}</p>
                   </div>
+
+                  {bookingData.notes && (
+                    <>
+                      <Separator />
+                      <div className="space-y-2">
+                        <h4 className="font-medium text-ink-blue">Additional Notes</h4>
+                        <p className="text-forest-green text-sm">{bookingData.notes}</p>
+                      </div>
+                    </>
+                  )}
                 </CardContent>
               </Card>
             </div>
 
-            {/* Payment Section */}
+            {/* Payment Form */}
             <div>
               <Card>
                 <CardHeader>
                   <CardTitle className="font-serif text-2xl text-ink-blue flex items-center gap-2">
                     <CreditCard className="w-6 h-6" />
-                    Secure Payment
+                    Payment Information
                   </CardTitle>
-                  <div className="flex items-center gap-2 text-sm text-forest-green">
-                    <Lock className="w-4 h-4" />
-                    <span>Your payment information is secure and encrypted</span>
-                  </div>
+                  <CardDescription>
+                    Your payment information is secure and encrypted.
+                  </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  {/* Mock Payment Form */}
-                  <div className="space-y-4">
-                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                      <div className="flex items-start gap-2">
-                        <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="text-sm text-yellow-800 font-medium">Demo Mode</p>
-                          <p className="text-sm text-yellow-700">
-                            This is a demonstration. In the live version, you would enter your payment details here. 
-                            Click "Complete Payment" to simulate the booking process.
-                          </p>
-                        </div>
+                <CardContent>
+                  <form onSubmit={handlePayment} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="cardNumber">Card Number</Label>
+                      <Input
+                        id="cardNumber"
+                        placeholder="1234 5678 9012 3456"
+                        value={paymentForm.cardNumber}
+                        onChange={(e) => setPaymentForm(prev => ({ ...prev, cardNumber: e.target.value }))}
+                        maxLength={19}
+                        required
+                        disabled={isProcessing}
+                        className="border-forest-green/30 focus:border-burnt-orange"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="expiryDate">Expiry Date</Label>
+                        <Input
+                          id="expiryDate"
+                          placeholder="MM/YY"
+                          value={paymentForm.expiryDate}
+                          onChange={(e) => setPaymentForm(prev => ({ ...prev, expiryDate: e.target.value }))}
+                          maxLength={5}
+                          required
+                          disabled={isProcessing}
+                          className="border-forest-green/30 focus:border-burnt-orange"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="cvv">CVV</Label>
+                        <Input
+                          id="cvv"
+                          placeholder="123"
+                          value={paymentForm.cvv}
+                          onChange={(e) => setPaymentForm(prev => ({ ...prev, cvv: e.target.value }))}
+                          maxLength={3}
+                          required
+                          disabled={isProcessing}
+                          className="border-forest-green/30 focus:border-burnt-orange"
+                        />
                       </div>
                     </div>
 
-                    {/* Mock Credit Card Form */}
-                    <div className="space-y-4 opacity-60">
-                      <div>
-                        <label className="block text-sm font-medium text-ink-blue mb-2">Card Number</label>
-                        <div className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50">
-                          **** **** **** 4242
-                        </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="nameOnCard">Name on Card</Label>
+                      <Input
+                        id="nameOnCard"
+                        placeholder="John Doe"
+                        value={paymentForm.nameOnCard}
+                        onChange={(e) => setPaymentForm(prev => ({ ...prev, nameOnCard: e.target.value }))}
+                        required
+                        disabled={isProcessing}
+                        className="border-forest-green/30 focus:border-burnt-orange"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="billingAddress">Billing Address</Label>
+                      <Input
+                        id="billingAddress"
+                        placeholder="123 Main Street"
+                        value={paymentForm.billingAddress}
+                        onChange={(e) => setPaymentForm(prev => ({ ...prev, billingAddress: e.target.value }))}
+                        required
+                        disabled={isProcessing}
+                        className="border-forest-green/30 focus:border-burnt-orange"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="city">City</Label>
+                        <Input
+                          id="city"
+                          placeholder="New York"
+                          value={paymentForm.city}
+                          onChange={(e) => setPaymentForm(prev => ({ ...prev, city: e.target.value }))}
+                          required
+                          disabled={isProcessing}
+                          className="border-forest-green/30 focus:border-burnt-orange"
+                        />
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-ink-blue mb-2">Expiry Date</label>
-                          <div className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50">
-                            MM/YY
-                          </div>
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-ink-blue mb-2">CVC</label>
-                          <div className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50">
-                            ***
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-ink-blue mb-2">Name on Card</label>
-                        <div className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50">
-                          {bookingData.name}
-                        </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="zipCode">ZIP Code</Label>
+                        <Input
+                          id="zipCode"
+                          placeholder="10001"
+                          value={paymentForm.zipCode}
+                          onChange={(e) => setPaymentForm(prev => ({ ...prev, zipCode: e.target.value }))}
+                          required
+                          disabled={isProcessing}
+                          className="border-forest-green/30 focus:border-burnt-orange"
+                        />
                       </div>
                     </div>
-                  </div>
 
-                  <Separator />
+                    <div className="flex items-center gap-2 text-sm text-forest-green bg-green-50 p-3 rounded-lg">
+                      <Lock className="w-4 h-4" />
+                      <span>Your payment information is secured with 256-bit SSL encryption</span>
+                    </div>
 
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center text-lg">
-                      <span className="text-forest-green">Total Amount:</span>
-                      <span className="font-bold text-2xl text-burnt-orange">
-                        ${bookingData.totalAmount.toLocaleString()}
-                      </span>
+                    <Separator />
+
+                    <div className="flex justify-between items-center">
+                      <span className="font-serif text-lg text-ink-blue">Total Amount:</span>
+                      <span className="font-bold text-2xl text-burnt-orange">${bookingData.totalAmount.toLocaleString()}</span>
                     </div>
 
                     <Button 
-                      onClick={handlePayment}
+                      type="submit" 
+                      className="w-full py-6 bg-burnt-orange hover:bg-burnt-orange/90 text-white text-lg font-medium"
                       disabled={isProcessing}
-                      className="w-full bg-burnt-orange hover:bg-burnt-orange/90 text-white py-6 text-lg"
                     >
                       {isProcessing ? (
                         <>
-                          <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2" />
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                           Processing Payment...
                         </>
                       ) : (
-                        <>
-                          Complete Payment
-                          <Lock className="w-5 h-5 ml-2" />
-                        </>
+                        `Complete Payment - $${bookingData.totalAmount.toLocaleString()}`
                       )}
                     </Button>
-
-                    <p className="text-xs text-forest-green text-center">
-                      By completing this payment, you agree to our terms of service and privacy policy.
-                    </p>
-                  </div>
+                  </form>
                 </CardContent>
               </Card>
             </div>

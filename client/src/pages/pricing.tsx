@@ -1,15 +1,17 @@
+
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Clock, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, DollarSign, CheckCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { motion } from "framer-motion";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -27,25 +29,56 @@ const services = {
     name: "Wildroot Intensive",
     price: 3997,
     duration: "6 months",
-    description: "6-Month Identity Reclamation Journey"
+    description: "6-Month Identity Reclamation Journey",
+    features: [
+      "12 bi-weekly 1:1 coaching sessions (90 minutes each)",
+      "Access to Shadow Lounge community for 6 months",
+      "Weekly Sunday Reset rituals and practices",
+      "Personalized identity reclamation toolkit",
+      "Voxer support between sessions",
+      "Bonus: The Disruption masterclass series"
+    ]
   },
   "one-on-one-coaching": {
     name: "1:1 Coaching Sessions",
     price: 350,
     duration: "90 minutes",
-    description: "Individual Deep Dive Sessions"
+    description: "Individual Deep Dive Sessions",
+    features: [
+      "90-minute deep dive coaching session",
+      "Pre-session preparation guide",
+      "Session recording for your reference",
+      "Follow-up integration practices",
+      "Option to add additional sessions"
+    ]
   },
   "shadow-lounge": {
     name: "Shadow Lounge Membership",
     price: 97,
     duration: "Monthly",
-    description: "Monthly Community Experience"
+    description: "Monthly Community Experience",
+    features: [
+      "Monthly group shadow work sessions",
+      "Private community access",
+      "Monthly integration calls",
+      "Shadow work toolkit",
+      "Peer support network",
+      "Guest expert sessions"
+    ]
   },
   "sunday-reset": {
     name: "Sunday Reset Ritual",
     price: 47,
     duration: "Weekly",
-    description: "Weekly Recalibration Practice"
+    description: "Weekly Recalibration Practice",
+    features: [
+      "Weekly video transmissions",
+      "Ritual design templates",
+      "Community sharing space",
+      "Monthly live Q&A sessions",
+      "Intention setting practices",
+      "Weekly reflection prompts"
+    ]
   }
 };
 
@@ -100,7 +133,7 @@ export default function Pricing() {
   };
 
   const handleBack = () => {
-    setLocation('/booking');
+    setLocation('/services');
   };
 
   if (!service) {
@@ -109,7 +142,7 @@ export default function Pricing() {
         <div className="text-center">
           <h1 className="font-serif text-3xl text-ink-blue mb-4">Service Not Found</h1>
           <p className="text-forest-green mb-6">Please select a service from our offerings.</p>
-          <Button onClick={() => setLocation('/booking')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-white">
+          <Button onClick={() => setLocation('/services')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-white">
             View Services
           </Button>
         </div>
@@ -138,98 +171,80 @@ export default function Pricing() {
 
       <div className="pb-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Service Summary */}
-            <div>
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="font-serif text-2xl text-ink-blue">
-                    {service.name}
-                  </CardTitle>
-                  <p className="text-faded-rust text-lg">{service.description}</p>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-forest-green">Duration:</span>
-                      <span className="font-medium text-ink-blue">{service.duration}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-forest-green">Investment:</span>
-                      <span className="text-2xl font-bold text-burnt-orange">
-                        ${service.price.toLocaleString()}
-                      </span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Service Details Card */}
+            <Card className="mb-8">
+              <CardHeader className="bg-gradient-to-r from-burnt-orange to-faded-rust text-white">
+                <CardTitle className="font-serif text-3xl">{service.name}</CardTitle>
+                <CardDescription className="text-white/90 text-lg">
+                  {service.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  <div className="flex items-center gap-3">
+                    <DollarSign className="w-6 h-6 text-burnt-orange" />
+                    <div>
+                      <div className="font-bold text-2xl text-ink-blue">${service.price.toLocaleString()}</div>
+                      <div className="text-forest-green text-sm">Investment</div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-6 h-6 text-burnt-orange" />
+                    <div>
+                      <div className="font-bold text-xl text-ink-blue">{service.duration}</div>
+                      <div className="text-forest-green text-sm">Duration</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Calendar className="w-6 h-6 text-burnt-orange" />
+                    <div>
+                      <div className="font-bold text-xl text-ink-blue">Premium</div>
+                      <div className="text-forest-green text-sm">Experience</div>
+                    </div>
+                  </div>
+                </div>
 
-              {/* What Happens Next */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="font-serif text-xl text-ink-blue">
-                    What Happens Next
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-burnt-orange mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-ink-blue">Submit Your Information</p>
-                        <p className="text-sm text-forest-green">Complete the booking form with your details</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-burnt-orange mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-ink-blue">Secure Payment</p>
-                        <p className="text-sm text-forest-green">Complete your investment securely online</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-burnt-orange mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-ink-blue">Confirmation & Preparation</p>
-                        <p className="text-sm text-forest-green">Receive confirmation email with session details and prep materials</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-burnt-orange mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-ink-blue">Begin Your Journey</p>
-                        <p className="text-sm text-forest-green">Start your identity reclamation work</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                <div className="mb-8">
+                  <h3 className="font-serif text-xl text-ink-blue mb-4">What's Included:</h3>
+                  <ul className="grid md:grid-cols-2 gap-2">
+                    {service.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3 text-forest-green">
+                        <CheckCircle className="w-4 h-4 text-burnt-orange mt-1 flex-shrink-0" />
+                        <span className="text-sm leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Booking Form */}
-            <div>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="font-serif text-2xl text-ink-blue">
-                    Book Your Session
-                  </CardTitle>
-                  <p className="text-forest-green">
-                    Share your details and we'll confirm your booking within 24 hours.
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="font-serif text-2xl text-ink-blue">Schedule Your Session</CardTitle>
+                <CardDescription>
+                  Choose your preferred date and time to begin your transformation journey.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-ink-blue">Full Name *</FormLabel>
+                            <FormLabel>Full Name *</FormLabel>
                             <FormControl>
-                              <Input
-                                placeholder="Enter your full name"
-                                {...field}
+                              <Input 
+                                placeholder="Enter your full name" 
+                                {...field} 
                                 className="border-forest-green/30 focus:border-burnt-orange"
                               />
                             </FormControl>
@@ -237,18 +252,17 @@ export default function Pricing() {
                           </FormItem>
                         )}
                       />
-
                       <FormField
                         control={form.control}
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-ink-blue">Email Address *</FormLabel>
+                            <FormLabel>Email Address *</FormLabel>
                             <FormControl>
-                              <Input
-                                type="email"
-                                placeholder="Enter your email address"
-                                {...field}
+                              <Input 
+                                type="email" 
+                                placeholder="Enter your email" 
+                                {...field} 
                                 className="border-forest-green/30 focus:border-burnt-orange"
                               />
                             </FormControl>
@@ -256,18 +270,19 @@ export default function Pricing() {
                           </FormItem>
                         )}
                       />
+                    </div>
 
+                    <div className="grid md:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
                         name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-ink-blue">Phone Number</FormLabel>
+                            <FormLabel>Phone Number</FormLabel>
                             <FormControl>
-                              <Input
-                                type="tel"
-                                placeholder="Enter your phone number"
-                                {...field}
+                              <Input 
+                                placeholder="Enter your phone number" 
+                                {...field} 
                                 className="border-forest-green/30 focus:border-burnt-orange"
                               />
                             </FormControl>
@@ -275,18 +290,17 @@ export default function Pricing() {
                           </FormItem>
                         )}
                       />
-
                       <FormField
                         control={form.control}
                         name="preferredDate"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-ink-blue">Preferred Date *</FormLabel>
+                            <FormLabel>Preferred Date *</FormLabel>
                             <FormControl>
-                              <Input
-                                type="date"
+                              <Input 
+                                type="date" 
                                 min={today}
-                                {...field}
+                                {...field} 
                                 className="border-forest-green/30 focus:border-burnt-orange"
                               />
                             </FormControl>
@@ -294,64 +308,74 @@ export default function Pricing() {
                           </FormItem>
                         )}
                       />
+                    </div>
 
-                      <FormField
-                        control={form.control}
-                        name="timeSlot"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-ink-blue">Preferred Time *</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                              <FormControl>
-                                <SelectTrigger className="border-forest-green/30 focus:border-burnt-orange">
-                                  <SelectValue placeholder="Select a time slot" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                {timeSlots.map((slot) => (
-                                  <SelectItem key={slot} value={slot}>
-                                    {slot}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="notes"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-ink-blue">Additional Notes</FormLabel>
+                    <FormField
+                      control={form.control}
+                      name="timeSlot"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Preferred Time Slot *</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <Textarea
-                                placeholder="Share anything that would help us prepare for your session..."
-                                rows={4}
-                                {...field}
-                                className="border-forest-green/30 focus:border-burnt-orange resize-none"
-                              />
+                              <SelectTrigger className="border-forest-green/30 focus:border-burnt-orange">
+                                <SelectValue placeholder="Select your preferred time" />
+                              </SelectTrigger>
                             </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                            <SelectContent>
+                              {timeSlots.map((slot) => (
+                                <SelectItem key={slot} value={slot}>
+                                  {slot}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                      <Button
-                        type="submit"
-                        className="w-full bg-burnt-orange hover:bg-burnt-orange/90 text-white py-6 text-lg"
+                    <FormField
+                      control={form.control}
+                      name="notes"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Additional Notes (Optional)</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Share anything you'd like us to know about your journey..."
+                              className="min-h-[100px] border-forest-green/30 focus:border-burnt-orange"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <div className="border-t pt-6">
+                      <div className="flex justify-between items-center mb-6">
+                        <div>
+                          <h3 className="font-serif text-xl text-ink-blue">Total Investment</h3>
+                          <p className="text-forest-green">One-time payment</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="font-bold text-3xl text-burnt-orange">${service.price.toLocaleString()}</div>
+                        </div>
+                      </div>
+
+                      <Button 
+                        type="submit" 
+                        className="w-full py-6 bg-burnt-orange hover:bg-burnt-orange/90 text-white text-lg font-medium"
                       >
-                        Proceed to Payment
-                        <ArrowRight className="w-5 h-5 ml-2" />
+                        Proceed to Payment - ${service.price.toLocaleString()}
                       </Button>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+                    </div>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </div>
