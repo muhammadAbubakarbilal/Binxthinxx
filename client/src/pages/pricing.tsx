@@ -108,10 +108,13 @@ export default function Pricing() {
   });
 
   useEffect(() => {
-    const params = new URLSearchParams(location.split('?')[1] || '');
-    const serviceParam = params.get('service');
-    if (serviceParam && services[serviceParam as keyof typeof services]) {
-      setSelectedService(serviceParam);
+    const urlParts = location.split('?');
+    if (urlParts.length > 1) {
+      const params = new URLSearchParams(urlParts[1]);
+      const serviceParam = params.get('service');
+      if (serviceParam && services[serviceParam as keyof typeof services]) {
+        setSelectedService(serviceParam);
+      }
     }
   }, [location]);
 
