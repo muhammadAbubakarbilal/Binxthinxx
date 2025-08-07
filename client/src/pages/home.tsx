@@ -7,7 +7,7 @@ import { ScrollAnimation, StaggerContainer, useTextReveal } from "@/components/s
 export default function Home() {
   const services = [
     {
-      id: 'wildroot',
+      id: 'wildroot-intensive',
       icon: 'fas fa-seedling',
       title: 'Wildroot',
       tagline: 'Return to your inner wilderness',
@@ -15,7 +15,7 @@ export default function Home() {
       delay: 0
     },
     {
-      id: '1on1',
+      id: 'one-on-one-coaching',
       icon: 'fas fa-heart',
       title: '1:1 Coaching',
       tagline: 'Deep identity reclamation work',
@@ -23,7 +23,7 @@ export default function Home() {
       delay: 0.1
     },
     {
-      id: 'shadow',
+      id: 'shadow-lounge',
       icon: 'fas fa-moon',
       title: 'Shadow Lounge',
       tagline: 'Integrate what you\'ve hidden',
@@ -31,7 +31,7 @@ export default function Home() {
       delay: 0.2
     },
     {
-      id: 'sunday',
+      id: 'sunday-reset',
       icon: 'fas fa-sun',
       title: 'Sunday Reset',
       tagline: 'Weekly rituals for intentional living',
