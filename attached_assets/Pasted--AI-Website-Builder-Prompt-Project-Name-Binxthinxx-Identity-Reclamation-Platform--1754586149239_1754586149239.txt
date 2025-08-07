@@ -1,0 +1,151 @@
+
+### **AI Website Builder Prompt**
+**Project Name:** Binxthinxx Identity Reclamation Platform  
+**Primary Goal:** Create an emotionally resonant coaching website that feels like "truth after a long performance" with themes of depth and intimacy  
+
+---
+
+### **Design Specifications**  
+```markdown
+1. COLOR PALETTE:
+   - Primary: Ink Blue (#0F1B2B) for headers/navigation
+   - Secondary: Burnt Orange (#D86F38) for ALL buttons/CTAs
+   - Background: Candlelight Beige (#F4EBDD) for content areas
+   - Accents: Forest Green (#2E5E4E) for dividers/icons (use sparingly)
+
+2. TYPOGRAPHY:
+   - Headings: Playfair Display (Bold, serif)
+   - Body: Lora (Regular, serif) OR Inter (Clean sans-serif)
+   - Size Hierarchy: H1: 48px | H2: 36px | Body: 18px
+
+3. VISUAL STYLE:
+   - Image Treatment: Dark/moody photos with firelight or shadow overlays
+   - Graphic Elements: Organic brush strokes (inspired by Matthias Barker)
+   - Animation: Subtle fade-ins on scroll (like Dr. Julie's site)
+   - Layout: Ample whitespace with asymmetric sections (CW Counseling style)
+```
+
+---
+
+### **Page-by-Page Structure**  
+**Homepage (The Disruption)**  
+```html
+[HERO SECTION]
+- Headline: "Reclaim the Self You Abandoned to Survive"
+- Subheading: "For high-functioning women exhausted by performance"
+- CTA Button: "Begin Your Reclamation" (#D86F38)
+- Background: Woman gazing into mirror with candlelight overlay
+
+[TESTIMONIAL SLIDER]
+- Auto-scrolling carousel with raw quotes: 
+  "Byanca saw me when I felt invisible..." - Jamie L.
+  "This work changed how I belong to myself" - Taylor R.
+- Display: 3 testimonials with faded rust (#B3541E) borders
+
+[SERVICES GRID]
+- 4 Cards with icons (Wildroot, 1:1 Coaching, Shadow Lounge, Sunday Reset)
+- Each card: Title + 8-word description + "Learn More" button
+- Visual: Abstract fire icon on burnt orange background
+```
+
+**About Page (The Mirror)**  
+```html
+[STORY SECTION]
+- Header: "From Performer to Person: My Reclamation Journey"
+- 4 Columns: 
+  1. Survival (Icon: Shield) 
+  2. Burnout (Icon: Broken vase) 
+  3. Realization (Icon: Lightbulb) 
+  4. Reclamation (Icon: Phoenix)
+- CTA: "Explore the Process" → Links to Services
+
+[APPROACH SECTION]
+- Bullet Points: 
+  • Trauma-Informed Framework  
+  • Identity-First Coaching  
+  • Shadow Work Integration
+- Credentials: ICF Certification | 10+ Years Experience
+```
+
+**Services Page (The Portal)**  
+```html
+[INTRO]
+- Quote: "You've built a life that works. Now you're ready for one that feels good."
+- Background: Forest path photo with green overlay
+
+[PROGRAM CARDS] - Repeat for each service
+|| WILDROOT ||
+• Tagline: "Return to your inner wilderness"
+• Before/After: "Performer → Whole Human"
+• Includes: 6 sessions | Journaling | Voice notes
+• For: Those craving self-belonging
+• CTA: "Join Waitlist" (Burnt Orange)
+
+[VIDEO SECTION] - For Vision Vault/Sunday Reset
+- Placeholder: "Transformation Montage Coming Soon" text
+- Decorative: Moving candle flame animation
+```
+
+**Testimonials (Proof of Life)**  
+```html
+[GALLERY]
+- Left: Cropped DM screenshots (raw praise)
+- Right: Quote cards with handwritten font
+- Background: Crinkled paper texture
+
+[FINAL CTA]
+- Text: "Want this to be your story?"
+- Button: "Book Discovery Call" (Full-width burnt orange)
+```
+
+**Contact Page (Open Door)**  
+```html
+[FORM]
+- Fields: Name | Email | "What brings you here?" (textarea)
+- Submit Button: "I'm ready for more" (#D86F38)
+- Integration: Google Form (pre-styled)
+
+[SCHEDULING]
+- Embedded Calendly widget with burnt orange accents
+- Social Icons: Instagram | Threads (left-aligned)
+```
+
+---
+
+### **Technical Requirements**  
+```markdown
+1. MOBILE RESPONSIVENESS:
+   - Stacked sections on mobile 
+   - Testimonial slider → Scrollable cards
+   - Hamburger menu with ink blue background
+
+2. FUNCTIONALITY:
+   - Testimonial slider (autoplay + manual controls)
+   - Service card hover effect: Slight elevation + shadow
+   - Form validation with error messages in forest green
+
+3. SEO OPTIMIZATION:
+   - Primary Keywords: "shadow work coaching", "trauma-informed identity work", "high-functioning burnout recovery"
+   - Meta Description: "Reclaim your self-belonging through poetic, emotionally intelligent coaching"
+```
+
+---
+
+### **Content Placeholders**  
+```plaintext
+IMPORTANT: Use these where copy isn't finalized:
+[ABOUT STORY]: "For years, I wore competence like armor - until the weight of performance crushed my spirit. My journey back to self-belonging began when..."
+[PROGRAM DESCRIPTIONS]: "A sacred container for [specific transformation]. We'll explore [core theme] through [method] to achieve [identity-level shift]"
+```
+
+---
+
+### **Launch Instructions for AI Builder**  
+1. Paste this entire prompt into your AI website builder  
+2. Select "Therapy/Coaching" as industry template  
+3. Apply color codes manually if not auto-detected  
+4. Use image suggestions: Search "intimate firelight portrait", "forest path mystery", "abstract shadow texture"  
+5. Test mobile view before publishing  
+
+**Pro Tip:** For platforms like Durable, add this voice command:  
+*"Create with emotional depth using organic shapes, burnt orange accents, and poetic typography - avoid minimalist or corporate aesthetics"*  
