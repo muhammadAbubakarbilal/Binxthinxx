@@ -12,24 +12,24 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: "1",
-    quote: "Byanca saw me when I felt invisible. She helped me find my way back to a self I thought I'd lost forever.",
-    author: "Jamie L.",
-    role: "Wildroot Graduate",
-    initial: "J"
+    quote: "I realized I was performing even in my own home. This work helped me find the woman underneath all that perfect daughter, perfect employee, perfect everything. She's messy and real and I love her.",
+    author: "Sarah M.",
+    role: "Former People-Pleaser",
+    initial: "S"
   },
   {
     id: "2", 
-    quote: "This work changed how I belong to myself. I no longer need to perform to be worthy of love.",
-    author: "Taylor R.",
-    role: "1:1 Coaching Client",
-    initial: "T"
+    quote: "I thought I had to choose between being successful and being authentic. Working together showed me that was just another lie I'd been telling myself to stay small.",
+    author: "Maya K.",
+    role: "VP of Marketing",
+    initial: "M"
   },
   {
     id: "3",
-    quote: "I finally understand what it means to live from authenticity instead of anxiety. This is life-changing work.",
-    author: "Maya S.",
-    role: "Shadow Lounge Member", 
-    initial: "M"
+    quote: "The hidden cost of being 'the strong one' was my own inner world. Finally, someone who gets that high-functioning can be its own form of self-abandonment.",
+    author: "Alex P.",
+    role: "Therapist (yes, really)",
+    initial: "A"
   }
 ];
 
@@ -54,7 +54,7 @@ export default function TestimonialSlider() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Voices of Transformation
+          The Proof of Life
         </motion.h2>
 
         <div className="relative overflow-hidden">
@@ -158,6 +158,30 @@ export default function TestimonialSlider() {
             ))}
           </motion.div>
         </div>
+
+        {/* Call to Action */}
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <p className="text-xl text-forest-green dark:text-forest-green/80 mb-6 font-lora italic">
+            Want this to be your story?
+          </p>
+          <motion.a
+            href="/contact"
+            className="interactive inline-block bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 0 25px rgba(216, 111, 56, 0.6)"
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Book Your Discovery Call
+          </motion.a>
+        </motion.div>
       </div>
     </div>
   );

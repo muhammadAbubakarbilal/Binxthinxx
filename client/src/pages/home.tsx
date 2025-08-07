@@ -10,28 +10,32 @@ export default function Home() {
       id: 'wildroot',
       icon: 'fas fa-seedling',
       title: 'Wildroot',
-      description: 'Return to your inner wilderness',
+      tagline: 'Return to your inner wilderness',
+      description: 'From performance-based living to authentic self-expression',
       delay: 0
     },
     {
       id: '1on1',
       icon: 'fas fa-heart',
       title: '1:1 Coaching',
-      description: 'Intimate transformation journey together',
+      tagline: 'Deep identity reclamation work',
+      description: 'Trauma-informed coaching for self-trust and belonging',
       delay: 0.1
     },
     {
       id: 'shadow',
       icon: 'fas fa-moon',
       title: 'Shadow Lounge',
-      description: 'Explore your hidden depths safely',
+      tagline: 'Integrate what you\'ve hidden',
+      description: 'Safe space to explore your disowned parts',
       delay: 0.2
     },
     {
       id: 'sunday',
       icon: 'fas fa-sun',
       title: 'Sunday Reset',
-      description: 'Weekly rituals for intentional living',
+      tagline: 'Weekly rituals for intentional living',
+      description: 'Structure that supports your authentic self',
       delay: 0.3
     }
   ];
@@ -72,9 +76,9 @@ export default function Home() {
 
         <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            {/* Character-by-Character Title Animation */}
+            {/* Identity Hook Headlines */}
             <motion.h1 
-              className="font-playfair font-bold text-4xl md:text-6xl text-white leading-tight mb-2"
+              className="font-playfair font-bold text-4xl md:text-6xl text-white leading-tight mb-6"
               variants={heroTitle.containerVariants}
               initial="hidden"
               animate="visible"
@@ -88,14 +92,7 @@ export default function Home() {
                   {char === ' ' ? '\u00A0' : char}
                 </motion.span>
               ))}
-            </motion.h1>
-
-            <motion.h1 
-              className="font-playfair font-bold text-4xl md:text-6xl text-white leading-tight mb-6"
-              variants={heroSubtitle.containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
+              <br />
               <span className="brush-stroke text-burnt-orange">
                 {heroSubtitle.characters.map((char, index) => (
                   <motion.span
@@ -110,15 +107,18 @@ export default function Home() {
             </motion.h1>
 
             <motion.p 
-              className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed"
+              className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed font-lora"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5 }}
             >
-              For high-functioning women exhausted by performance
+              For high-functioning women who've built lives that work<br />
+              but are ready for ones that feel good.
             </motion.p>
 
+            {/* CTA Above the Fold */}
             <motion.div
+              className="flex flex-col sm:flex-row gap-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 2 }}
@@ -132,7 +132,20 @@ export default function Home() {
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Begin Your Reclamation
+                  Book Your Discovery Call
+                </motion.button>
+              </Link>
+              
+              <Link href="/services">
+                <motion.button 
+                  className="interactive border-2 border-white/50 hover:border-white text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
+                  whileHover={{ 
+                    scale: 1.05,
+                    backgroundColor: "rgba(255, 255, 255, 0.1)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Explore the Process
                 </motion.button>
               </Link>
             </motion.div>
@@ -145,13 +158,16 @@ export default function Home() {
       {/* Testimonial Slider */}
       <TestimonialSlider />
 
-      {/* Services Grid - Enhanced with Stagger Animations */}
+      {/* Services - "The Portal" */}
       <section className="py-20 bg-candlelight-beige dark:bg-ink-blue/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation variant="textReveal" className="text-center mb-16">
-            <h2 className="font-playfair font-bold text-3xl md:text-4xl text-ink-blue dark:text-candlelight-beige">
-              Pathways to Reclamation
+            <h2 className="font-playfair font-bold text-3xl md:text-4xl text-ink-blue dark:text-candlelight-beige mb-4">
+              The Portal
             </h2>
+            <p className="text-xl text-forest-green dark:text-forest-green/80 font-lora italic max-w-2xl mx-auto">
+              You've built a life that works. Now you're ready for one that feels good.
+            </p>
           </ScrollAnimation>
 
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -184,11 +200,15 @@ export default function Home() {
                     <i className={`${service.icon} text-white text-2xl`}></i>
                   </motion.div>
                   
-                  <h3 className="font-playfair font-bold text-xl text-ink-blue dark:text-candlelight-beige mb-4">
+                  <h3 className="font-playfair font-bold text-xl text-ink-blue dark:text-candlelight-beige mb-2">
                     {service.title}
                   </h3>
                   
-                  <p className="text-forest-green dark:text-forest-green/80 mb-6">
+                  <p className="text-burnt-orange font-lora italic text-sm mb-3">
+                    {service.tagline}
+                  </p>
+                  
+                  <p className="text-forest-green dark:text-forest-green/80 mb-6 leading-relaxed">
                     {service.description}
                   </p>
                   

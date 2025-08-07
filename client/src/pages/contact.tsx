@@ -62,9 +62,14 @@ export default function Contact() {
   return (
     <section className="py-20 bg-candlelight-beige">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="font-playfair font-bold text-4xl md:text-5xl text-ink-blue text-center mb-16">
-          Open Door
-        </h1>
+        <div className="text-center mb-16">
+          <h1 className="font-playfair font-bold text-4xl md:text-5xl text-ink-blue mb-6">
+            The Open Door
+          </h1>
+          <p className="text-xl text-forest-green font-lora italic max-w-2xl mx-auto">
+            This isn't just a contact form. It's a declaration: I'm ready for more.
+          </p>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
