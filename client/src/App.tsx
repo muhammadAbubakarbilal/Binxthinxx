@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import PageTransition from "@/components/page-transition";
-import InteractiveCursor from "@/components/interactive-cursor";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Services from "@/pages/services";
@@ -42,7 +41,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="min-h-screen bg-candlelight-beige dark:bg-ink-blue">
-          <InteractiveCursor />
           <Navigation />
           <main>
             <Router />
