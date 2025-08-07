@@ -11,7 +11,7 @@ interface VideoSlide {
 
 export default function VideoCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Therapist-style video content featuring intimate therapeutic settings
@@ -49,6 +49,16 @@ export default function VideoCarousel() {
     return () => clearInterval(interval);
   }, [isPlaying, videoSlides.length]);
 
+  // Auto-play video when component mounts
+  useEffect(() => {
+    if (videoRef.current && isPlaying) {
+      videoRef.current.play().catch(() => {
+        // Auto-play blocked by browser, user will need to interact first
+        setIsPlaying(false);
+      });
+    }
+  }, [currentSlide, isPlaying]);
+
   const handlePlayPause = () => {
     if (videoRef.current) {
       if (isPlaying) {
@@ -69,7 +79,7 @@ export default function VideoCarousel() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-ink-blue via-ink-blue/90 to-forest-green/20">
+    <section className="py-12 bg-gradient-to-br from-ink-blue/95 via-ink-blue/80 to-forest-green/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12"
@@ -115,18 +125,22 @@ export default function VideoCarousel() {
                     transition={{ duration: 2 }}
                   />
                   
-                  {/* Video Element (Hidden initially, shows on play) */}
+                  {/* Video Element (Auto-playing, prominent display) */}
                   <video
                     ref={videoRef}
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                      isPlaying ? 'opacity-100' : 'opacity-0'
+                      isPlaying ? 'opacity-100' : 'opacity-50'
                     }`}
                     src={videoSlides[currentSlide].videoUrl}
                     onEnded={() => setIsPlaying(false)}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                   />
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-ink-blue/70 via-transparent to-ink-blue/50" />
+                  {/* Subtle Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-ink-blue/30 via-transparent to-ink-blue/20" />
 
                   {/* Content Overlay */}
                   <div className="absolute inset-0 flex items-center">
