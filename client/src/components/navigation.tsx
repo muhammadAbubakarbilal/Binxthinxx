@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./theme-toggle";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,66 +21,132 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-ink-blue text-white sticky top-0 z-50 shadow-lg">
+    <motion.nav 
+      className="bg-ink-blue dark:bg-ink-blue/95 text-white sticky top-0 z-50 shadow-lg backdrop-blur-sm"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/">
-              <h1 className="font-playfair font-bold text-xl cursor-pointer hover:text-burnt-orange transition-colors duration-300">
+              <motion.h1 
+                className="font-playfair font-bold text-xl cursor-pointer hover:text-burnt-orange transition-colors duration-300 interactive"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Binxthinxx
-              </h1>
+              </motion.h1>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navLinks.map((link) => (
-                <Link
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="flex items-baseline space-x-8">
+              {navLinks.map((link, index) => (
+                <motion.div
                   key={link.href}
-                  href={link.href}
-                  className={`hover:text-burnt-orange transition-colors duration-300 font-medium ${
-                    isActiveLink(link.href) ? "text-burnt-orange" : ""
-                  }`}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index, duration: 0.5 }}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    href={link.href}
+                    className={`interactive relative hover:text-burnt-orange transition-colors duration-300 font-medium ${
+                      isActiveLink(link.href) ? "text-burnt-orange" : ""
+                    }`}
+                  >
+                    <motion.span
+                      whileHover={{ y: -2 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {link.label}
+                    </motion.span>
+                    {isActiveLink(link.href) && (
+                      <motion.div
+                        className="absolute bottom-[-6px] left-0 right-0 h-0.5 bg-burnt-orange"
+                        layoutId="activeNavLink"
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
               ))}
             </div>
+            
+            {/* Theme Toggle */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.3 }}
+            >
+              <ThemeToggle />
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle />
+            <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:text-burnt-orange transition-colors duration-300"
+              className="interactive text-white hover:text-burnt-orange transition-colors duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               aria-label="Toggle mobile menu"
             >
-              <i className="fas fa-bars text-xl"></i>
-            </button>
+              <motion.i 
+                className={`${isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'} text-xl`}
+                animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-ink-blue border-t border-forest-green">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-3 py-2 hover:text-burnt-orange transition-colors duration-300 ${
-                  isActiveLink(link.href) ? "text-burnt-orange" : ""
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+      {/* Mobile Navigation - Enhanced with Animations */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="md:hidden bg-ink-blue/95 border-t border-forest-green backdrop-blur-sm"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div 
+              className="px-2 pt-2 pb-3 space-y-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+            >
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 * index, duration: 0.3 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`interactive block px-3 py-2 hover:text-burnt-orange transition-colors duration-300 ${
+                      isActiveLink(link.href) ? "text-burnt-orange bg-burnt-orange/10 rounded-lg" : ""
+                    }`}
+                  >
+                    <motion.span
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {link.label}
+                    </motion.span>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }

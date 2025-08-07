@@ -1,0 +1,163 @@
+
+### **Modern Animation & Transition Prompt**
+```markdown
+**CORE ANIMATION PRINCIPLES:**
+- "Organic digital intimacy" - transitions should feel human, not robotic
+- Depth layers (parallax, 3D space)
+- Micro-interactions with purpose
+- Smooth morphing between states
+- Dark mode optimized
+
+**GLOBAL TRANSITIONS:**
+```css
+/* Page Transitions */
+:root {
+  --transition-slow: 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-medium: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 300ms cubic-bezier(0.32, 0, 0.67, 0);
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: var(--transition-slow);
+}
+```
+
+**SECTION-SPECIFIC ANIMATIONS:**
+
+1. **HERO SECTION (The Disruption):**
+   - Text reveal: Headline chars stagger in with fade-up (50ms delay between chars)
+   - Candlelight effect: Animated SVG flame with flickering opacity (GSAP timeline)
+   - Mirror image: Interactive reflection effect on hover (using canvas/WebGL)
+   - CTA pulse: Subtle glow animation (box-shadow: 0 0 15px rgba(216, 111, 56, 0.6))
+
+2. **SERVICE CARDS (The Portal):**
+   - 3D tilt effect on hover (perspective: 1000px; transform: rotateX(5deg) rotateY(5deg))
+   - Border morph: Beige → Burnt Orange animated border
+   - Content reveal: Overlay slides down to reveal details (clip-path animation)
+
+3. **TESTIMONIAL SLIDER (Proof of Life):**
+   - Organic transition: Cards rotate 3deg while scaling down when exiting
+   - Authenticity effect: Handwritten signatures fade in after quote
+   - Screenshot hover: Subtle paper crinkle effect (displacement map)
+
+4. **STORY TIMELINE (The Mirror):**
+   - Vertical scroll-triggered animation: 
+     - Icons draw themselves (SVG path animation)
+     - Connection lines grow between sections
+     - Text fades in with typewriter effect
+
+5. **DARK MODE CONSIDERATIONS:**
+   - All animations should maintain depth in low-light
+   - Flame animations intensify in dark mode
+   - Ink blue (#0F1B2B) becomes primary background with text in #F4EBDD
+
+**ADVANCED INTERACTIONS:**
+```javascript
+// Cursor intimacy effect
+document.addEventListener('mousemove', (e) => {
+  const cursor = document.querySelector('.custom-cursor');
+  const x = e.clientX;
+  const y = e.clientY;
+  
+  // Smooth trailing effect
+  gsap.to(cursor, {
+    x: x - 10,
+    y: y - 10,
+    duration: 0.5,
+    ease: 'expo.out'
+  });
+
+  // Interactive elements glow on proximity
+  const elements = document.querySelectorAll('.interactive');
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const distance = Math.sqrt(
+      Math.pow(x - (rect.left + rect.width/2), 2) + 
+      Math.pow(y - (rect.top + rect.height/2), 2)
+    );
+    
+    if (distance < 150) {
+      el.style.boxShadow = `0 0 ${30 - distance/5}px rgba(216, 111, 56, ${0.5 - distance/300})`;
+    }
+  });
+});
+```
+
+**TOOL-SPECIFIC IMPLEMENTATION:**
+
+**For Framer:**
+```markdown
+1. Use Smart Animate between pages with "fadeWithScale" preset
+2. Implement whileHover variants for cards:
+   ```jsx
+   const cardVariants = {
+     rest: { scale: 1 },
+     hover: { 
+       scale: 1.03,
+       y: -15,
+       boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+     }
+   }
+   ```
+3. Add Lottie animations for flame effects
+```
+
+**For React (GSAP + Framer Motion):**
+```jsx
+// Page transition wrapper
+<AnimatePresence mode="wait">
+  <motion.div
+    key={router.route}
+    initial="initial"
+    animate="animate"
+    exit="exit"
+    variants={{
+      initial: { opacity: 0, y: 50 },
+      animate: { opacity: 1, y: 0 },
+      exit: { opacity: 0, y: -20 }
+    }}
+    transition={{ duration: 0.75 }}
+  >
+    {children}
+  </motion.div>
+</AnimatePresence>
+```
+
+**For Webflow:**
+```markdown
+1. Add custom attribute: [fs-scroll="fade-in"] to sections
+2. Use interactive cursor effects via:
+   ```css
+   body { cursor: none; }
+   .cursor-dot { 
+     width: 8px; height: 8px; 
+     background: #D86F38; 
+   }
+   .cursor-outline { 
+     width: 40px; height: 40px; 
+     border: 1px solid #D86F38; 
+   }
+   ```
+3. Implement "turbulence" filter on hover for organic distortion
+```
+
+**PERFORMANCE OPTIMIZATIONS:**
+```markdown
+- Use will-change: transform, opacity
+- Prefers-reduced-motion media query
+- Lazy load animations below fold
+- GPU acceleration: transform: translateZ(0)
+- Limit simultaneous animations to 5
+```
+
+**VISUAL INSPIRATION REFERENCES:**
+1. Emotional depth: https://www.rune-madsen.com/ 
+2. Organic motion: https://www.studiotrend.com/
+3. Dark elegance: https://www.guillaumedumenil.com/
+

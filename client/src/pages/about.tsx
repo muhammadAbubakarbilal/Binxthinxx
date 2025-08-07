@@ -1,4 +1,6 @@
 import { Link } from "wouter";
+import { motion } from "framer-motion";
+import { ScrollAnimation, StaggerContainer } from "@/components/scroll-animations";
 
 export default function About() {
   const journeySteps = [
@@ -56,26 +58,68 @@ export default function About() {
           </p>
         </div>
 
-        {/* Journey Timeline */}
-        <div className="grid md:grid-cols-4 gap-8 mb-16">
+        {/* Journey Timeline - Enhanced with Scroll Animations */}
+        <StaggerContainer className="grid md:grid-cols-4 gap-8 mb-16" staggerDelay={0.2}>
           {journeySteps.map((step, index) => (
-            <div key={step.title} className="text-center group">
-              <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300 ${
-                index === 3 
-                  ? 'bg-burnt-orange group-hover:bg-ink-blue' 
-                  : 'bg-ink-blue group-hover:bg-burnt-orange'
-              }`}>
-                <i className={`${step.icon} text-white text-2xl`}></i>
-              </div>
-              <h3 className="font-playfair font-bold text-xl text-ink-blue mb-4">
+            <ScrollAnimation 
+              key={step.title} 
+              variant="scaleIn" 
+              delay={index * 0.15}
+              className="text-center group"
+            >
+              <motion.div 
+                className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300 interactive will-change-transform ${
+                  index === 3 
+                    ? 'bg-burnt-orange group-hover:bg-ink-blue' 
+                    : 'bg-ink-blue group-hover:bg-burnt-orange'
+                }`}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 360,
+                  transition: { duration: 0.5 }
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.i 
+                  className={`${step.icon} text-white text-2xl`}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+                />
+              </motion.div>
+              
+              <motion.h3 
+                className="font-playfair font-bold text-xl text-ink-blue dark:text-candlelight-beige mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+              >
                 {step.title}
-              </h3>
-              <p className="text-forest-green leading-relaxed">
+              </motion.h3>
+              
+              <motion.p 
+                className="text-forest-green dark:text-forest-green/80 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 + index * 0.1 }}
+              >
                 {step.description}
-              </p>
-            </div>
+              </motion.p>
+
+              {/* Connection Line - Only show between steps */}
+              {index < journeySteps.length - 1 && (
+                <motion.div 
+                  className="absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-burnt-orange to-forest-green hidden md:block"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
+                  style={{ transformOrigin: 'left' }}
+                />
+              )}
+            </ScrollAnimation>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Approach Section */}
         <div className="bg-candlelight-beige p-12 rounded-xl">
