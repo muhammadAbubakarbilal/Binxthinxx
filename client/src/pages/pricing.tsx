@@ -6,10 +6,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calendar, Clock, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Calendar, Clock, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -61,7 +61,7 @@ const timeSlots = [
 export default function Pricing() {
   const [location, setLocation] = useLocation();
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  
+
   const form = useForm<BookingFormData>({
     resolver: zodResolver(bookingFormSchema),
     defaultValues: {
@@ -86,7 +86,7 @@ export default function Pricing() {
 
   const onSubmit = (data: BookingFormData) => {
     if (!service) return;
-    
+
     // Store booking data in sessionStorage for the payment page
     const bookingData = {
       ...data,
@@ -94,7 +94,7 @@ export default function Pricing() {
       serviceName: service.name,
       totalAmount: service.price,
     };
-    
+
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
     setLocation('/payment');
   };
@@ -125,8 +125,8 @@ export default function Pricing() {
       {/* Navigation */}
       <div className="pt-24 pb-8 px-6">
         <div className="max-w-4xl mx-auto">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={handleBack}
             className="mb-6 border-forest-green text-forest-green hover:bg-forest-green hover:text-white"
           >
@@ -227,8 +227,8 @@ export default function Pricing() {
                           <FormItem>
                             <FormLabel className="text-ink-blue">Full Name *</FormLabel>
                             <FormControl>
-                              <Input 
-                                placeholder="Enter your full name" 
+                              <Input
+                                placeholder="Enter your full name"
                                 {...field}
                                 className="border-forest-green/30 focus:border-burnt-orange"
                               />
@@ -245,9 +245,9 @@ export default function Pricing() {
                           <FormItem>
                             <FormLabel className="text-ink-blue">Email Address *</FormLabel>
                             <FormControl>
-                              <Input 
+                              <Input
                                 type="email"
-                                placeholder="Enter your email address" 
+                                placeholder="Enter your email address"
                                 {...field}
                                 className="border-forest-green/30 focus:border-burnt-orange"
                               />
@@ -264,9 +264,9 @@ export default function Pricing() {
                           <FormItem>
                             <FormLabel className="text-ink-blue">Phone Number</FormLabel>
                             <FormControl>
-                              <Input 
+                              <Input
                                 type="tel"
-                                placeholder="Enter your phone number" 
+                                placeholder="Enter your phone number"
                                 {...field}
                                 className="border-forest-green/30 focus:border-burnt-orange"
                               />
@@ -283,7 +283,7 @@ export default function Pricing() {
                           <FormItem>
                             <FormLabel className="text-ink-blue">Preferred Date *</FormLabel>
                             <FormControl>
-                              <Input 
+                              <Input
                                 type="date"
                                 min={today}
                                 {...field}
@@ -327,7 +327,7 @@ export default function Pricing() {
                           <FormItem>
                             <FormLabel className="text-ink-blue">Additional Notes</FormLabel>
                             <FormControl>
-                              <Textarea 
+                              <Textarea
                                 placeholder="Share anything that would help us prepare for your session..."
                                 rows={4}
                                 {...field}
@@ -339,8 +339,8 @@ export default function Pricing() {
                         )}
                       />
 
-                      <Button 
-                        type="submit" 
+                      <Button
+                        type="submit"
                         className="w-full bg-burnt-orange hover:bg-burnt-orange/90 text-white py-6 text-lg"
                       >
                         Proceed to Payment

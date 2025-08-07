@@ -1,56 +1,39 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Mail, Phone, MapPin, Clock, Heart, Send, Calendar } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-const contactFormSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Please enter a valid email address"),
-  message: z.string().min(10, "Please tell us more about what brings you here (at least 10 characters)")
-});
-
-type ContactForm = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDiscoveryCall, setIsDiscoveryCall] = useState(false);
+  const [, setLocation] = useLocation();
   const { toast } = useToast();
 
-  const form = useForm<ContactForm>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: ""
-    }
-  });
-
-  const onSubmit = async (data: ContactForm) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    try {
-      // In a real implementation, this would integrate with Google Forms API
-      // For now, we'll simulate the submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. We'll be in touch soon.",
-      });
-      
-      form.reset();
-    } catch (error) {
-      toast({
-        title: "Error sending message",
-        description: "Please try again or contact us directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+
+    toast({
+      title: isDiscoveryCall ? "Discovery Call Requested!" : "Message Sent!",
+      description: isDiscoveryCall 
+        ? "We'll contact you within 24 hours to schedule your complimentary discovery call."
+        : "Thank you for reaching out. We'll get back to you soon.",
+    });
+  };
+
+  const handleScheduleDiscoveryCall = () => {
+    setIsDiscoveryCall(true);
   };
 
   const expectations = [
@@ -71,124 +54,165 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Discovery Call Section */}
+          <Card className="mb-8 md:col-span-2">
+            <CardHeader>
+              <CardTitle className="font-serif text-2xl text-ink-blue flex items-center gap-2">
+                <Calendar className="w-6 h-6 text-burnt-orange" />
+                Schedule Your Complimentary Discovery Call
+              </CardTitle>
+              <p className="text-forest-green">
+                Not sure which offering is right for you? Book a 30-minute discovery call to explore your path to authentic living.
+              </p>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                onClick={handleScheduleDiscoveryCall}
+                className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 text-lg"
+              >
+                Schedule Discovery Call
+              </Button>
+            </CardContent>
+          </Card>
+
           {/* Contact Form */}
-          <div>
-            <h2 className="font-playfair font-bold text-2xl text-ink-blue mb-8">Ready to Begin?</h2>
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-serif text-2xl text-ink-blue flex items-center gap-2">
+                <Heart className="w-6 h-6 text-burnt-orange" />
+                {isDiscoveryCall ? "Discovery Call Request" : "Let's Connect"}
+              </CardTitle>
+              <p className="text-forest-green">
+                {isDiscoveryCall 
+                  ? "Tell us a bit about yourself and we'll schedule your complimentary discovery call." 
+                  : "Ready to begin your journey? I'd love to hear from you."
+                }
+              </p>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="name" className="text-ink-blue">Your Name</Label>
+                    <Input 
+                      id="name" 
+                      placeholder="Enter your full name"
+                      className="mt-2 border-forest-green/30 focus:border-burnt-orange"
+                      required
+                    />
+                  </div>
 
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-forest-green font-semibold">Name</FormLabel>
-                      <FormControl>
-                        <Input 
-                          {...field} 
-                          className="border-forest-green/30 bg-white focus:ring-2 focus:ring-burnt-orange focus:border-transparent transition-all duration-300"
-                        />
-                      </FormControl>
-                      <FormMessage className="text-forest-green" />
-                    </FormItem>
-                  )}
-                />
+                  <div>
+                    <Label htmlFor="email" className="text-ink-blue">Email Address</Label>
+                    <Input 
+                      id="email" 
+                      type="email"
+                      placeholder="Enter your email"
+                      className="mt-2 border-forest-green/30 focus:border-burnt-orange"
+                      required
+                    />
+                  </div>
 
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-forest-green font-semibold">Email</FormLabel>
-                      <FormControl>
-                        <Input 
-                          type="email"
-                          {...field} 
-                          className="border-forest-green/30 bg-white focus:ring-2 focus:ring-burnt-orange focus:border-transparent transition-all duration-300"
-                        />
-                      </FormControl>
-                      <FormMessage className="text-forest-green" />
-                    </FormItem>
-                  )}
-                />
+                  <div>
+                    <Label htmlFor="phone" className="text-ink-blue">Phone Number</Label>
+                    <Input 
+                      id="phone" 
+                      type="tel"
+                      placeholder="Enter your phone number"
+                      className="mt-2 border-forest-green/30 focus:border-burnt-orange"
+                    />
+                  </div>
 
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-forest-green font-semibold">What brings you here?</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          {...field} 
-                          rows={6}
-                          className="border-forest-green/30 bg-white focus:ring-2 focus:ring-burnt-orange focus:border-transparent transition-all duration-300 resize-none"
-                        />
-                      </FormControl>
-                      <FormMessage className="text-forest-green" />
-                    </FormItem>
+                  {isDiscoveryCall && (
+                    <div>
+                      <Label htmlFor="timePreference" className="text-ink-blue">Preferred Call Time</Label>
+                      <Select>
+                        <SelectTrigger className="mt-2 border-forest-green/30 focus:border-burnt-orange">
+                          <SelectValue placeholder="Select preferred time" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="morning">Morning (9 AM - 12 PM)</SelectItem>
+                          <SelectItem value="afternoon">Afternoon (12 PM - 5 PM)</SelectItem>
+                          <SelectItem value="evening">Evening (5 PM - 8 PM)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   )}
-                />
+
+                  {!isDiscoveryCall && (
+                    <div>
+                      <Label htmlFor="subject" className="text-ink-blue">Subject</Label>
+                      <Input 
+                        id="subject" 
+                        placeholder="What's on your mind?"
+                        className="mt-2 border-forest-green/30 focus:border-burnt-orange"
+                        required
+                      />
+                    </div>
+                  )}
+
+                  <div>
+                    <Label htmlFor="message" className="text-ink-blue">
+                      {isDiscoveryCall ? "Tell us about your journey" : "Message"}
+                    </Label>
+                    <Textarea 
+                      id="message"
+                      placeholder={isDiscoveryCall 
+                        ? "What's calling you to this work? What would you like to explore during our call?"
+                        : "Share what's calling you to this work..."
+                      }
+                      className="mt-2 min-h-[120px] border-forest-green/30 focus:border-burnt-orange"
+                      required
+                    />
+                  </div>
+                </div>
 
                 <Button 
-                  type="submit" 
+                  type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:transform hover:scale-105"
+                  className="w-full bg-burnt-orange hover:bg-burnt-orange/90 text-white py-3"
                 >
-                  {isSubmitting ? "Sending..." : "I'm ready for more"}
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2" />
+                      {isDiscoveryCall ? "Scheduling..." : "Sending..."}
+                    </>
+                  ) : (
+                    <>
+                      {isDiscoveryCall ? "Request Discovery Call" : "Send Message"}
+                      <Send className="w-4 h-4 ml-2" />
+                    </>
+                  )}
                 </Button>
-              </form>
-            </Form>
 
-            {/* Social Icons */}
-            <div className="mt-8 flex space-x-4">
-              <a 
-                href="#" 
-                className="w-12 h-12 bg-ink-blue rounded-full flex items-center justify-center text-white hover:bg-burnt-orange transition-colors duration-300"
-                aria-label="Instagram"
-              >
-                <i className="fab fa-instagram text-xl"></i>
-              </a>
-              <a 
-                href="#" 
-                className="w-12 h-12 bg-ink-blue rounded-full flex items-center justify-center text-white hover:bg-burnt-orange transition-colors duration-300"
-                aria-label="Threads"
-              >
-                <i className="fab fa-threads text-xl"></i>
-              </a>
-            </div>
-          </div>
+                {isDiscoveryCall && (
+                  <Button 
+                    type="button"
+                    variant="outline"
+                    onClick={() => setIsDiscoveryCall(false)}
+                    className="w-full mt-2 border-forest-green text-forest-green hover:bg-forest-green hover:text-white"
+                  >
+                    Send Regular Message Instead
+                  </Button>
+                )}
+              </form>
+            </CardContent>
+          </Card>
 
           {/* Scheduling */}
-          <div>
-            <h2 className="font-playfair font-bold text-2xl text-ink-blue mb-8">Book Your Discovery Call</h2>
+          <div className="hidden lg:block"> {/* Placeholder for potential future content or spacing */}</div>
 
-            {/* Calendly Widget Placeholder */}
-            <div className="bg-white p-8 rounded-xl shadow-lg min-h-96 flex items-center justify-center mb-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-burnt-orange rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
-                  <i className="fas fa-calendar-alt text-white text-2xl"></i>
-                </div>
-                <p className="font-playfair text-xl text-ink-blue mb-4">Schedule Your Call</p>
-                <p className="text-forest-green mb-6">Choose a time that works for your transformation</p>
-                <Button className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
-                  View Available Times
-                </Button>
-              </div>
-            </div>
-
-            <div className="p-6 bg-white rounded-lg border border-forest-green/20">
-              <h3 className="font-playfair font-bold text-lg text-ink-blue mb-3">What to Expect:</h3>
-              <ul className="space-y-2 text-forest-green">
-                {expectations.map((expectation, index) => (
-                  <li key={index} className="flex items-start">
-                    <i className="fas fa-check-circle text-burnt-orange mt-1 mr-3"></i>
-                    <span>{expectation}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="bg-white p-8 rounded-xl shadow-lg border border-forest-green/10">
+            <h3 className="font-playfair font-bold text-lg text-ink-blue mb-3">What to Expect:</h3>
+            <ul className="space-y-2 text-forest-green">
+              {expectations.map((expectation, index) => (
+                <li key={index} className="flex items-start">
+                  <i className="fas fa-check-circle text-burnt-orange mt-1 mr-3"></i>
+                  <span>{expectation}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

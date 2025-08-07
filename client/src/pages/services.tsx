@@ -132,7 +132,7 @@ export default function Services() {
                   )}
 
                   <Link href={program.ctaLink}>
-                    <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                    <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
                       {program.ctaText}
                     </button>
                   </Link>
