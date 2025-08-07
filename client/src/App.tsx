@@ -12,6 +12,10 @@ import Services from "@/pages/services";
 import Testimonials from "@/pages/testimonials";
 import Contact from "@/pages/contact";
 import Booking from "@/pages/booking";
+import BookingWildroot from "@/pages/booking-wildroot";
+import BookingCoaching from "@/pages/booking-coaching";
+import BookingShadow from "@/pages/booking-shadow";
+import BookingSunday from "@/pages/booking-sunday";
 import Pricing from "@/pages/pricing";
 import Payment from "@/pages/payment";
 import BookingSuccess from "@/pages/booking-success";
@@ -27,6 +31,10 @@ function Router() {
         <Route path="/testimonials" component={Testimonials} />
         <Route path="/contact" component={Contact} />
         <Route path="/booking" component={Booking} />
+        <Route path="/booking-wildroot" component={BookingWildroot} />
+        <Route path="/booking-one" component={BookingCoaching} />
+        <Route path="/booking-shadow" component={BookingShadow} />
+        <Route path="/booking-sunday" component={BookingSunday} />
         <Route path="/pricing" component={Pricing} />
         <Route path="/payment" component={Payment} />
         <Route path="/booking-success" component={BookingSuccess} />

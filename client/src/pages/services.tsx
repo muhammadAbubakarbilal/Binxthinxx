@@ -131,7 +131,7 @@ export default function Services() {
                     </div>
                   )}
 
-                  <Link href={program.ctaLink}>
+                  <Link href={`/booking-${program.id.split('-')[0]}`}>
                     <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
                       {program.ctaText}
                     </button>
