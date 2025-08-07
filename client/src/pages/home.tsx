@@ -212,7 +212,13 @@ export default function Home() {
                     {service.description}
                   </p>
                   
-                  <Link href={`/booking-${service.id.split('-')[0]}`}>
+                  <Link href={
+                    service.id === 'wildroot-intensive' ? '/booking-wildroot' :
+                    service.id === 'one-on-one-coaching' ? '/booking-coaching' :
+                    service.id === 'shadow-lounge' ? '/booking-shadow' :
+                    service.id === 'sunday-reset' ? '/booking-sunday' :
+                    '/booking'
+                  }>
                     <motion.button 
                       className="interactive bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 w-full"
                       whileHover={{ scale: 1.05 }}

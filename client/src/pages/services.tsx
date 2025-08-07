@@ -131,7 +131,13 @@ export default function Services() {
                     </div>
                   )}
 
-                  <Link href={`/booking-${program.id.split('-')[0]}`}>
+                  <Link href={
+                    program.id === 'wildroot-intensive' ? '/booking-wildroot' :
+                    program.id === 'one-on-one-coaching' ? '/booking-coaching' :
+                    program.id === 'shadow-lounge' ? '/booking-shadow' :
+                    program.id === 'sunday-reset' ? '/booking-sunday' :
+                    '/booking'
+                  }>
                     <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
                       {program.ctaText}
                     </button>

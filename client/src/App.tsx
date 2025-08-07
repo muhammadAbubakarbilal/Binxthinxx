@@ -32,7 +32,7 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/booking" component={Booking} />
         <Route path="/booking-wildroot" component={BookingWildroot} />
-        <Route path="/booking-one" component={BookingCoaching} />
+        <Route path="/booking-coaching" component={BookingCoaching} />
         <Route path="/booking-shadow" component={BookingShadow} />
         <Route path="/booking-sunday" component={BookingSunday} />
         <Route path="/pricing" component={Pricing} />
