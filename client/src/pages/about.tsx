@@ -49,10 +49,10 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Story Section */}
         <div className="text-center mb-20">
-          <h1 className="font-playfair font-bold text-4xl md:text-5xl text-ink-blue mb-8">
+          <h1 className="font-playfair font-bold text-4xl md:text-5xl text-gray-950 dark:text-white mb-8">
             From Performer to Person: My Reclamation Journey
           </h1>
-          <p className="text-xl text-forest-green max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-950 dark:text-white max-w-3xl mx-auto leading-relaxed">
             For years, I wore competence like armor - until the weight of performance crushed my spirit. 
             My journey back to self-belonging began when I realized that surviving wasn't the same as living.
           </p>
@@ -89,7 +89,7 @@ export default function About() {
               </motion.div>
 
               <motion.h3 
-                className="font-playfair font-bold text-xl text-ink-blue dark:text-candlelight-beige mb-4"
+                className="font-playfair font-bold text-xl text-gray-950 dark:text-white mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
@@ -98,7 +98,7 @@ export default function About() {
               </motion.h3>
 
               <motion.p 
-                className="text-forest-green dark:text-gray-300 leading-relaxed"
+                className="text-gray-950 dark:text-white leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.1 }}
@@ -123,7 +123,7 @@ export default function About() {
 
         {/* Approach Section */}
         <div className="bg-candlelight-beige p-12 rounded-xl">
-          <h2 className="font-playfair font-bold text-3xl text-ink-blue text-center mb-12">
+          <h2 className="font-playfair font-bold text-3xl text-gray-950 dark:text-white text-center mb-12">
             My Approach
           </h2>
 
@@ -133,17 +133,17 @@ export default function About() {
                 <div className="w-16 h-16 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-6">
                   <i className={`${approach.icon} text-white text-xl`}></i>
                 </div>
-                <h3 className="font-playfair font-bold text-lg text-ink-blue mb-4">
+                <h3 className="font-playfair font-bold text-lg text-gray-950 dark:text-white mb-4">
                   {approach.title}
                 </h3>
-                <p className="text-forest-green">{approach.description}</p>
+                <p className="text-gray-950 dark:text-white">{approach.description}</p>
               </div>
             ))}
           </div>
 
           {/* Credentials */}
           <div className="text-center border-t border-forest-green/20 pt-8">
-            <p className="text-forest-green text-lg">
+            <p className="text-gray-950 dark:text-white text-lg">
               <strong>ICF Certification</strong> • <strong>10+ Years Experience</strong> • <strong>Trauma-Informed Practitioner</strong>
             </p>
           </div>

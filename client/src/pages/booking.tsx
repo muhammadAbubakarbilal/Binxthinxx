@@ -91,13 +91,13 @@ export default function Booking() {
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-ink-blue mb-6 leading-tight">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-black dark:text-white mb-6 leading-tight">
             Choose Your Portal
-            <span className="block text-2xl md:text-3xl lg:text-4xl text-faded-rust font-normal mt-2">
+            <span className="block text-2xl md:text-3xl lg:text-4xl text-black dark:text-white font-normal mt-2">
               Into Authentic Living
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-forest-green max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
             Each offering is a carefully crafted invitation to step away from the performance 
             and into the truth of who you really are. Choose the path that calls to your soul.
           </p>
@@ -113,7 +113,7 @@ export default function Booking() {
                 service.popular ? 'ring-2 ring-burnt-orange shadow-xl' : ''
               }`}>
                 {service.popular && (
-                  <Badge className="absolute -top-3 left-6 bg-burnt-orange text-white px-4 py-1">
+                  <Badge className="absolute -top-3 left-6 bg-burnt-orange text-black dark:text-white px-4 py-1">
                     Most Popular
                   </Badge>
                 )}
@@ -121,18 +121,18 @@ export default function Booking() {
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <CardTitle className="font-serif text-2xl text-ink-blue mb-2">
+                      <CardTitle className="font-serif text-2xl text-black dark:text-white mb-2">
                         {service.name}
                       </CardTitle>
-                      <CardDescription className="text-faded-rust text-lg font-medium">
+                      <CardDescription className="text-black dark:text-white text-lg font-medium">
                         {service.tagline}
                       </CardDescription>
                     </div>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-burnt-orange">
+                      <div className="text-3xl font-bold text-black dark:text-white">
                         ${service.price.toLocaleString()}
                       </div>
-                      <div className="text-forest-green text-sm">
+                      <div className="text-black dark:text-white text-sm">
                         {service.duration}
                       </div>
                     </div>
@@ -140,11 +140,11 @@ export default function Booking() {
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  <p className="text-forest-green leading-relaxed">
+                  <p className="text-black dark:text-white leading-relaxed">
                     {service.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-4 text-sm text-forest-green">
+                  <div className="flex flex-wrap gap-4 text-sm text-black dark:text-white">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-burnt-orange" />
                       <span>{service.duration}</span>
@@ -160,14 +160,14 @@ export default function Booking() {
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="font-serif text-lg text-ink-blue">What's Included:</h4>
+                    <h4 className="font-serif text-lg text-black dark:text-white">What's Included:</h4>
                     <ul className="space-y-2">
                       {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-3 text-forest-green">
+                        <li key={index} className="flex items-start gap-3 text-black dark:text-white">
                           <Star className="w-4 h-4 text-burnt-orange mt-1 flex-shrink-0" />
                           <span className="text-sm leading-relaxed">{feature}</span>
                         </li>
-                      ))}
+                      ))} 
                     </ul>
                   </div>
 
@@ -175,9 +175,9 @@ export default function Booking() {
                     onClick={() => handleSelectService(service.id)}
                     className={`w-full py-6 text-lg font-medium transition-all duration-300 ${
                       service.popular 
-                        ? 'bg-burnt-orange hover:bg-burnt-orange/90 text-white' 
-                        : 'bg-ink-blue hover:bg-ink-blue/90 text-white'
-                    }`}
+                        ? 'bg-burnt-orange hover:bg-burnt-orange/90 text-black dark:text-white' 
+                        : 'bg-ink-blue hover:bg-ink-blue/90 text-black dark:text-white'
+                    }`} 
                   >
                     Select This Journey
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -192,10 +192,10 @@ export default function Booking() {
       {/* Bottom CTA */}
       <section className="bg-ink-blue py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-candlelight-beige mb-6">
+          <h2 className="font-serif text-3xl md:text-4xl text-white dark:text-white mb-6">
             Not Sure Which Path Is Right?
           </h2>
-          <p className="text-xl text-candlelight-beige/80 mb-8 leading-relaxed">
+          <p className="text-xl text-white dark:text-white mb-8 leading-relaxed">
             Book a complimentary 30-minute discovery call to explore which offering 
             aligns with where you are in your reclamation journey.
           </p>

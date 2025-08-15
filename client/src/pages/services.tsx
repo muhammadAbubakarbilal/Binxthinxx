@@ -87,7 +87,7 @@ export default function Services() {
             }}
           ></div>
           <div className="relative z-10 text-center">
-            <blockquote className="font-playfair text-3xl md:text-4xl text-white leading-relaxed italic">
+            <blockquote className="font-playfair text-3xl md:text-4xl text-black dark:text-white leading-relaxed italic">
               "You've built a life that works. Now you're ready for one that feels good."
             </blockquote>
           </div>
@@ -98,7 +98,7 @@ export default function Services() {
           {programs.map((program) => (
             <div key={program.id} className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="md:flex">
-                <div className={`md:w-1/3 p-8 bg-gradient-to-br ${program.gradient} text-white`}>
+                <div className={`md:w-1/3 p-8 bg-gradient-to-br ${program.gradient} text-black dark:text-white`}>
                   <h2 className="font-playfair font-bold text-3xl mb-4">{program.title}</h2>
                   <p className="text-xl italic mb-6">{program.tagline}</p>
                   <div className="space-y-2 text-lg">
@@ -107,8 +107,8 @@ export default function Services() {
                   </div>
                 </div>
                 <div className="md:w-2/3 p-8">
-                  <h3 className="font-playfair font-bold text-xl text-ink-blue mb-4">What's Included:</h3>
-                  <ul className="space-y-2 text-forest-green mb-6">
+                  <h3 className="font-playfair font-bold text-xl text-black dark:text-white mb-4">What's Included:</h3>
+                  <ul className="space-y-2 text-black dark:text-white mb-6">
                     {program.includes.map((item, index) => (
                       <li key={index} className="flex items-center">
                         <i className="fas fa-check-circle text-burnt-orange mr-3"></i>
@@ -116,7 +116,7 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-forest-green dark:text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-black dark:text-white mb-6 leading-relaxed">
                     <strong>Perfect for:</strong> {program.perfectFor}
                   </p>
 
@@ -126,8 +126,8 @@ export default function Services() {
                       <div className="animate-float">
                         <i className="fas fa-video text-burnt-orange text-4xl mb-4"></i>
                       </div>
-                      <p className="font-playfair text-xl text-ink-blue mb-2">Transformation Montage Coming Soon</p>
-                      <p className="text-forest-green">Experience the journey through video testimonials</p>
+                      <p className="font-playfair text-xl text-black dark:text-white mb-2">Transformation Montage Coming Soon</p>
+                      <p className="text-black dark:text-white">Experience the journey through video testimonials</p>
                     </div>
                   )}
 
@@ -138,7 +138,7 @@ export default function Services() {
                     program.id === 'sunday-reset' ? '/booking-sunday' :
                     '/booking'
                   }>
-                    <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                    <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-black dark:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
                       {program.ctaText}
                     </button>
                   </Link>

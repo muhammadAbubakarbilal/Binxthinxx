@@ -95,9 +95,9 @@ export default function Payment() {
     return (
       <div className="min-h-screen bg-candlelight-beige flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-serif text-3xl text-ink-blue mb-4">No Booking Found</h1>
-          <p className="text-forest-green mb-6">Please start a new booking.</p>
-          <Button onClick={() => setLocation('/services')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-white">
+          <h1 className="font-serif text-3xl text-black dark:text-white mb-4">No Booking Found</h1>
+          <p className="text-black dark:text-white mb-6">Please start a new booking.</p>
+          <Button onClick={() => setLocation('/services')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-black dark:text-white">
             View Services
           </Button>
         </div>
@@ -117,8 +117,8 @@ export default function Payment() {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
-          <h1 className="font-serif text-3xl text-ink-blue mb-4">Payment Successful!</h1>
-          <p className="text-forest-green mb-6">Your booking has been confirmed. Redirecting...</p>
+          <h1 className="font-serif text-3xl text-black dark:text-white mb-4">Payment Successful!</h1>
+          <p className="text-black dark:text-white mb-6">Your booking has been confirmed. Redirecting...</p>
         </motion.div>
       </div>
     );
@@ -136,7 +136,7 @@ export default function Payment() {
             disabled={isProcessing}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Booking Details
+            <span className="text-black dark:text-white">Back to Booking Details</span>
           </Button>
         </div>
       </div>
@@ -148,40 +148,40 @@ export default function Payment() {
             <div>
               <Card>
                 <CardHeader>
-                  <CardTitle className="font-serif text-2xl text-ink-blue flex items-center gap-2">
+                  <CardTitle className="font-serif text-2xl text-black dark:text-white flex items-center gap-2">
                     <CheckCircle className="w-6 h-6 text-green-600" />
                     Booking Summary
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <h3 className="font-serif text-xl text-ink-blue mb-2">{bookingData.serviceName}</h3>
-                    <p className="text-forest-green">Investment: <span className="font-bold text-burnt-orange text-xl">${bookingData.totalAmount.toLocaleString()}</span></p>
+                    <h3 className="font-serif text-xl text-black dark:text-white mb-2">{bookingData.serviceName}</h3>
+                    <p className="text-black dark:text-white">Investment: <span className="font-bold text-burnt-orange text-xl">${bookingData.totalAmount.toLocaleString()}</span></p>
                   </div>
 
                   <Separator />
 
                   <div className="space-y-2">
-                    <h4 className="font-medium text-ink-blue">Contact Information</h4>
-                    <p className="text-forest-green"><strong>Name:</strong> {bookingData.name}</p>
-                    <p className="text-forest-green"><strong>Email:</strong> {bookingData.email}</p>
-                    {bookingData.phone && <p className="text-forest-green"><strong>Phone:</strong> {bookingData.phone}</p>}
+                    <h4 className="font-medium text-black dark:text-white">Contact Information</h4>
+                    <p className="text-black dark:text-white"><strong>Name:</strong> {bookingData.name}</p>
+                    <p className="text-black dark:text-white"><strong>Email:</strong> {bookingData.email}</p>
+                    {bookingData.phone && <p className="text-black dark:text-white"><strong>Phone:</strong> {bookingData.phone}</p>}
                   </div>
 
                   <Separator />
 
                   <div className="space-y-2">
-                    <h4 className="font-medium text-ink-blue">Session Details</h4>
-                    <p className="text-forest-green"><strong>Date:</strong> {new Date(bookingData.preferredDate).toLocaleDateString()}</p>
-                    <p className="text-forest-green"><strong>Time:</strong> {bookingData.timeSlot}</p>
+                    <h4 className="font-medium text-black dark:text-white">Session Details</h4>
+                    <p className="text-black dark:text-white"><strong>Date:</strong> {new Date(bookingData.preferredDate).toLocaleDateString()}</p>
+                    <p className="text-black dark:text-white"><strong>Time:</strong> {bookingData.timeSlot}</p>
                   </div>
 
                   {bookingData.notes && (
                     <>
                       <Separator />
                       <div className="space-y-2">
-                        <h4 className="font-medium text-ink-blue">Additional Notes</h4>
-                        <p className="text-forest-green text-sm">{bookingData.notes}</p>
+                        <h4 className="font-medium text-black dark:text-white">Additional Notes</h4>
+                        <p className="text-black dark:text-white text-sm">{bookingData.notes}</p>
                       </div>
                     </>
                   )}
@@ -193,11 +193,11 @@ export default function Payment() {
             <div>
               <Card>
                 <CardHeader>
-                  <CardTitle className="font-serif text-2xl text-ink-blue flex items-center gap-2">
+                  <CardTitle className="font-serif text-2xl text-black dark:text-white flex items-center gap-2">
                     <CreditCard className="w-6 h-6" />
                     Payment Information
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-black dark:text-white">
                     Your payment information is secure and encrypted.
                   </CardDescription>
                 </CardHeader>

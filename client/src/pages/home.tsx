@@ -78,7 +78,7 @@ export default function Home() {
           <div className="max-w-3xl">
             {/* Identity Hook Headlines */}
             <motion.h1 
-              className="font-playfair font-bold text-4xl md:text-6xl text-white leading-tight mb-6"
+              className="font-playfair font-bold text-4xl md:text-6xl text-black dark:text-white leading-tight mb-6"
               variants={heroTitle.containerVariants}
               initial="hidden"
               animate="visible"
@@ -97,7 +97,7 @@ export default function Home() {
                 {heroSubtitle.characters.map((char, index) => (
                   <motion.span
                     key={index}
-                    variants={subtitle.characterVariants}
+                    variants={heroSubtitle.characterVariants}
                     className="inline-block"
                   >
                     {char === ' ' ? '\u00A0' : char}
@@ -107,7 +107,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p 
-              className="text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto leading-relaxed font-lora"
+              className="text-xl md:text-2xl mb-8 text-black dark:text-white max-w-2xl mx-auto leading-relaxed font-lora"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5 }}
@@ -125,7 +125,7 @@ export default function Home() {
             >
               <Link href="/booking">
                 <motion.button 
-                  className="cta-pulse interactive bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
+                  className="cta-pulse interactive bg-burnt-orange hover:bg-burnt-orange/90 text-black dark:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
                   whileHover={{ 
                     scale: 1.05,
                     boxShadow: "0 0 25px rgba(216, 111, 56, 0.6)"
@@ -138,7 +138,7 @@ export default function Home() {
 
               <Link href="/contact">
                 <motion.button 
-                  className="interactive border-2 border-white/50 hover:border-white text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
+                  className="interactive border-2 border-black/50 dark:border-white/50 hover:border-black dark:hover:border-white text-black dark:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
                   whileHover={{ 
                     scale: 1.05,
                     backgroundColor: "rgba(255, 255, 255, 0.1)"
@@ -162,10 +162,10 @@ export default function Home() {
       <section className="py-20 bg-candlelight-beige dark:bg-ink-blue/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation variant="textReveal" className="text-center mb-16">
-            <h2 className="font-playfair font-bold text-3xl md:text-4xl text-ink-blue dark:text-candlelight-beige mb-4">
+            <h2 className="font-playfair font-bold text-3xl md:text-4xl text-black dark:text-white mb-4">
               The Portal
             </h2>
-            <p className="text-xl text-forest-green dark:text-forest-green/80 font-lora italic max-w-2xl mx-auto">
+            <p className="text-xl text-black dark:text-white font-lora italic max-w-2xl mx-auto">
               You've built a life that works. Now you're ready for one that feels good.
             </p>
           </ScrollAnimation>
@@ -200,15 +200,15 @@ export default function Home() {
                     <i className={`${service.icon} text-white text-2xl`}></i>
                   </motion.div>
 
-                  <h3 className="font-playfair font-bold text-xl text-ink-blue dark:text-candlelight-beige mb-2">
+                  <h3 className="font-playfair font-bold text-xl text-black dark:text-white mb-2">
                     {service.title}
                   </h3>
 
-                  <p className="text-burnt-orange font-lora italic text-sm mb-3">
+                  <p className="text-black dark:text-white font-lora italic text-sm mb-3">
                     {service.tagline}
                   </p>
 
-                  <p className="text-forest-green dark:text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-black dark:text-white mb-6 leading-relaxed">
                     {service.description}
                   </p>
 

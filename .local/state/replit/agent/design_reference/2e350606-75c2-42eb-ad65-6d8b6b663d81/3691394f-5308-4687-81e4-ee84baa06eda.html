@@ -1,0 +1,852 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binxthinxx - Identity Reclamation Platform</title>
+    <meta name="description" content="Reclaim your self-belonging through poetic, emotionally intelligent coaching for high-functioning women exhausted by performance.">
+    <meta name="keywords" content="shadow work coaching, trauma-informed identity work, high-functioning burnout recovery, identity reclamation">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ink-blue': '#0F1B2B',
+                        'burnt-orange': '#D86F38',
+                        'candlelight-beige': '#F4EBDD',
+                        'forest-green': '#2E5E4E',
+                        'faded-rust': '#B3541E'
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'lora': ['Lora', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .brush-stroke {
+            position: relative;
+        }
+        .brush-stroke::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 8px;
+            background: linear-gradient(90deg, transparent, #D86F38, transparent);
+            bottom: -4px;
+            left: -10%;
+            opacity: 0.6;
+            border-radius: 4px;
+        }
+        .organic-shape {
+            clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
+        }
+        .testimonial-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(15, 27, 43, 0.15);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(15, 27, 43, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-candlelight-beige font-lora">
+    
+    <!-- Navigation -->
+    <nav class="bg-ink-blue text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="font-playfair font-bold text-xl">Binxthinxx</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-burnt-orange transition-colors duration-300 font-medium">Home</a>
+                        <a href="#about" class="hover:text-burnt-orange transition-colors duration-300 font-medium">About</a>
+                        <a href="#services" class="hover:text-burnt-orange transition-colors duration-300 font-medium">Services</a>
+                        <a href="#testimonials" class="hover:text-burnt-orange transition-colors duration-300 font-medium">Testimonials</a>
+                        <a href="#contact" class="hover:text-burnt-orange transition-colors duration-300 font-medium">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-burnt-orange">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-ink-blue border-t border-forest-green">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 hover:text-burnt-orange transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 hover:text-burnt-orange transition-colors">About</a>
+                <a href="#services" class="block px-3 py-2 hover:text-burnt-orange transition-colors">Services</a>
+                <a href="#testimonials" class="block px-3 py-2 hover:text-burnt-orange transition-colors">Testimonials</a>
+                <a href="#contact" class="block px-3 py-2 hover:text-burnt-orange transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Homepage -->
+    <section id="home">
+        <!-- Hero Section -->
+        <div class="relative min-h-screen flex items-center">
+            <!-- Intimate portrait of a woman in contemplative pose with warm lighting -->
+            <div class="absolute inset-0 bg-gradient-to-r from-ink-blue/80 to-transparent z-10"></div>
+            <div class="absolute inset-0" style="background-image: url('https://pixabay.com/get/g82e214de155c377d063422a9f9664cc4cd1741e50efa195c8d45c9da47f8cf396c37be81ac2eeddd6982c076709cda33aab3766692870f8a3de0f790d6a2bb61_1280.jpg'); background-size: cover; background-position: center;"></div>
+            
+            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl">
+                    <h1 class="font-playfair font-bold text-4xl md:text-6xl text-white leading-tight mb-6 animate-fade-in">
+                        Reclaim the Self You <span class="brush-stroke text-burnt-orange">Abandoned</span> to Survive
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed animate-slide-up">
+                        For high-functioning women exhausted by performance
+                    </p>
+                    <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:transform hover:scale-105 animate-slide-up">
+                        Begin Your Reclamation
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial Slider -->
+        <div class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-playfair font-bold text-3xl md:text-4xl text-ink-blue text-center mb-16">
+                    Voices of Transformation
+                </h2>
+                
+                <div class="relative overflow-hidden">
+                    <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
+                        <div class="w-full md:w-1/3 flex-shrink-0 px-4">
+                            <div class="testimonial-card bg-candlelight-beige p-8 rounded-xl border-2 border-faded-rust/30 h-full">
+                                <p class="text-lg italic text-ink-blue mb-6 leading-relaxed">
+                                    "Byanca saw me when I felt invisible. She helped me find my way back to a self I thought I'd lost forever."
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-burnt-orange rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-white font-bold">J</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-ink-blue">Jamie L.</p>
+                                        <p class="text-forest-green text-sm">Wildroot Graduate</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full md:w-1/3 flex-shrink-0 px-4">
+                            <div class="testimonial-card bg-candlelight-beige p-8 rounded-xl border-2 border-faded-rust/30 h-full">
+                                <p class="text-lg italic text-ink-blue mb-6 leading-relaxed">
+                                    "This work changed how I belong to myself. I no longer need to perform to be worthy of love."
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-burnt-orange rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-white font-bold">T</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-ink-blue">Taylor R.</p>
+                                        <p class="text-forest-green text-sm">1:1 Coaching Client</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full md:w-1/3 flex-shrink-0 px-4">
+                            <div class="testimonial-card bg-candlelight-beige p-8 rounded-xl border-2 border-faded-rust/30 h-full">
+                                <p class="text-lg italic text-ink-blue mb-6 leading-relaxed">
+                                    "I finally understand what it means to live from authenticity instead of anxiety. This is life-changing work."
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-burnt-orange rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-white font-bold">M</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-ink-blue">Maya S.</p>
+                                        <p class="text-forest-green text-sm">Shadow Lounge Member</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Controls -->
+                    <div class="flex justify-center mt-8 space-x-2">
+                        <button class="w-3 h-3 bg-burnt-orange rounded-full opacity-100"></button>
+                        <button class="w-3 h-3 bg-forest-green/30 rounded-full opacity-50"></button>
+                        <button class="w-3 h-3 bg-forest-green/30 rounded-full opacity-50"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="py-20 bg-candlelight-beige">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-playfair font-bold text-3xl md:text-4xl text-ink-blue text-center mb-16">
+                    Pathways to Reclamation
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="w-16 h-16 bg-burnt-orange rounded-lg flex items-center justify-center mb-6 animate-float">
+                            <i class="fas fa-seedling text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">Wildroot</h3>
+                        <p class="text-forest-green mb-6">Return to your inner wilderness</p>
+                        <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 w-full">
+                            Learn More
+                        </button>
+                    </div>
+                    
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="w-16 h-16 bg-burnt-orange rounded-lg flex items-center justify-center mb-6 animate-float" style="animation-delay: 0.2s;">
+                            <i class="fas fa-heart text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">1:1 Coaching</h3>
+                        <p class="text-forest-green mb-6">Intimate transformation journey together</p>
+                        <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 w-full">
+                            Learn More
+                        </button>
+                    </div>
+                    
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="w-16 h-16 bg-burnt-orange rounded-lg flex items-center justify-center mb-6 animate-float" style="animation-delay: 0.4s;">
+                            <i class="fas fa-moon text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">Shadow Lounge</h3>
+                        <p class="text-forest-green mb-6">Explore your hidden depths safely</p>
+                        <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 w-full">
+                            Learn More
+                        </button>
+                    </div>
+                    
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="w-16 h-16 bg-burnt-orange rounded-lg flex items-center justify-center mb-6 animate-float" style="animation-delay: 0.6s;">
+                            <i class="fas fa-sun text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">Sunday Reset</h3>
+                        <p class="text-forest-green mb-6">Weekly rituals for intentional living</p>
+                        <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 w-full">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Story Section -->
+            <div class="text-center mb-20">
+                <h2 class="font-playfair font-bold text-4xl md:text-5xl text-ink-blue mb-8">
+                    From Performer to Person: My Reclamation Journey
+                </h2>
+                <p class="text-xl text-forest-green max-w-3xl mx-auto leading-relaxed">
+                    For years, I wore competence like armor - until the weight of performance crushed my spirit. My journey back to self-belonging began when I realized that surviving wasn't the same as living.
+                </p>
+            </div>
+            
+            <!-- Journey Timeline -->
+            <div class="grid md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-ink-blue rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-burnt-orange transition-colors duration-300">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">Survival</h3>
+                    <p class="text-forest-green leading-relaxed">
+                        Building walls to protect a tender heart, learning to perform safety instead of feeling it.
+                    </p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-ink-blue rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-burnt-orange transition-colors duration-300">
+                        <i class="fas fa-tired text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">Burnout</h3>
+                    <p class="text-forest-green leading-relaxed">
+                        When the mask became too heavy and the performance too exhausting to maintain.
+                    </p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-ink-blue rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-burnt-orange transition-colors duration-300">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">Realization</h3>
+                    <p class="text-forest-green leading-relaxed">
+                        The moment I understood that my greatest strength was also my greatest prison.
+                    </p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-burnt-orange rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-ink-blue transition-colors duration-300">
+                        <i class="fas fa-phoenix-squadron text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-xl text-ink-blue mb-4">Reclamation</h3>
+                    <p class="text-forest-green leading-relaxed">
+                        Rising from the ashes of who I thought I should be into who I truly am.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Approach Section -->
+            <div class="bg-candlelight-beige p-12 rounded-xl">
+                <h3 class="font-playfair font-bold text-3xl text-ink-blue text-center mb-12">My Approach</h3>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-brain text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-playfair font-bold text-lg text-ink-blue mb-4">Trauma-Informed Framework</h4>
+                        <p class="text-forest-green">Understanding how survival strategies shape identity and gently releasing what no longer serves.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-fingerprint text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-playfair font-bold text-lg text-ink-blue mb-4">Identity-First Coaching</h4>
+                        <p class="text-forest-green">Moving beyond behavior change to fundamental shifts in how you see and belong to yourself.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-yin-yang text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-playfair font-bold text-lg text-ink-blue mb-4">Shadow Work Integration</h4>
+                        <p class="text-forest-green">Reclaiming the parts of yourself you've hidden to become whole and authentic.</p>
+                    </div>
+                </div>
+                
+                <!-- Credentials -->
+                <div class="text-center border-t border-forest-green/20 pt-8">
+                    <p class="text-forest-green text-lg">
+                        <strong>ICF Certification</strong> • <strong>10+ Years Experience</strong> • <strong>Trauma-Informed Practitioner</strong>
+                    </p>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300">
+                        Explore the Process
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Page -->
+    <section id="services" class="py-20 bg-candlelight-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Intro -->
+            <div class="relative mb-20 p-16 rounded-xl overflow-hidden">
+                <!-- Forest path with mysterious lighting -->
+                <div class="absolute inset-0 bg-gradient-to-r from-forest-green/90 to-forest-green/70" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=800'); background-size: cover; background-position: center;"></div>
+                <div class="relative z-10 text-center">
+                    <blockquote class="font-playfair text-3xl md:text-4xl text-white leading-relaxed italic">
+                        "You've built a life that works. Now you're ready for one that feels good."
+                    </blockquote>
+                </div>
+            </div>
+            
+            <!-- Program Cards -->
+            <div class="space-y-16">
+                <!-- Wildroot -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 p-8 bg-gradient-to-br from-burnt-orange to-faded-rust text-white">
+                            <h3 class="font-playfair font-bold text-3xl mb-4">WILDROOT</h3>
+                            <p class="text-xl italic mb-6">Return to your inner wilderness</p>
+                            <div class="space-y-2 text-lg">
+                                <p><strong>From:</strong> Performer</p>
+                                <p><strong>To:</strong> Whole Human</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <h4 class="font-playfair font-bold text-xl text-ink-blue mb-4">What's Included:</h4>
+                            <ul class="space-y-2 text-forest-green mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>6 deep-dive coaching sessions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Guided journaling prompts</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Voice note support between sessions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Shadow work exercises</li>
+                            </ul>
+                            <p class="text-forest-green mb-6 leading-relaxed">
+                                <strong>Perfect for:</strong> Those craving self-belonging and ready to release the exhausting performance of being who they think they should be.
+                            </p>
+                            <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                                Join Waitlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 1:1 Coaching -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 p-8 bg-gradient-to-br from-ink-blue to-forest-green text-white">
+                            <h3 class="font-playfair font-bold text-3xl mb-4">1:1 COACHING</h3>
+                            <p class="text-xl italic mb-6">Intimate transformation journey</p>
+                            <div class="space-y-2 text-lg">
+                                <p><strong>From:</strong> Fragmented</p>
+                                <p><strong>To:</strong> Integrated</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <h4 class="font-playfair font-bold text-xl text-ink-blue mb-4">What's Included:</h4>
+                            <ul class="space-y-2 text-forest-green mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Bi-weekly 90-minute sessions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Personalized integration practices</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Email support between sessions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Custom resource library</li>
+                            </ul>
+                            <p class="text-forest-green mb-6 leading-relaxed">
+                                <strong>Perfect for:</strong> Those ready for deep, sustained transformation with personalized support and accountability.
+                            </p>
+                            <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                                Book Discovery Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Shadow Lounge -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 p-8 bg-gradient-to-br from-forest-green to-ink-blue text-white">
+                            <h3 class="font-playfair font-bold text-3xl mb-4">SHADOW LOUNGE</h3>
+                            <p class="text-xl italic mb-6">Explore your hidden depths</p>
+                            <div class="space-y-2 text-lg">
+                                <p><strong>From:</strong> Hiding</p>
+                                <p><strong>To:</strong> Embracing</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <h4 class="font-playfair font-bold text-xl text-ink-blue mb-4">What's Included:</h4>
+                            <ul class="space-y-2 text-forest-green mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Monthly group shadow work sessions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Private community access</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Monthly integration calls</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Shadow work toolkit</li>
+                            </ul>
+                            <p class="text-forest-green mb-6 leading-relaxed">
+                                <strong>Perfect for:</strong> Those ready to reclaim disowned parts of themselves in a safe, supportive group setting.
+                            </p>
+                            <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sunday Reset -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 p-8 bg-gradient-to-br from-burnt-orange to-forest-green text-white">
+                            <h3 class="font-playfair font-bold text-3xl mb-4">SUNDAY RESET</h3>
+                            <p class="text-xl italic mb-6">Weekly rituals for intentional living</p>
+                            <div class="space-y-2 text-lg">
+                                <p><strong>From:</strong> Reactive</p>
+                                <p><strong>To:</strong> Intentional</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <h4 class="font-playfair font-bold text-xl text-ink-blue mb-4">What's Included:</h4>
+                            <ul class="space-y-2 text-forest-green mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Weekly video transmissions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Ritual design templates</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Community sharing space</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-burnt-orange mr-3"></i>Monthly live Q&A sessions</li>
+                            </ul>
+                            <p class="text-forest-green mb-6 leading-relaxed">
+                                <strong>Perfect for:</strong> Those wanting to cultivate weekly practices that anchor you in authenticity and intention.
+                            </p>
+                            
+                            <!-- Video Section Placeholder -->
+                            <div class="bg-candlelight-beige p-8 rounded-lg mb-6 text-center">
+                                <div class="animate-float">
+                                    <i class="fas fa-video text-burnt-orange text-4xl mb-4"></i>
+                                </div>
+                                <p class="font-playfair text-xl text-ink-blue mb-2">Transformation Montage Coming Soon</p>
+                                <p class="text-forest-green">Experience the journey through video testimonials</p>
+                            </div>
+                            
+                            <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                                Join Community
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-playfair font-bold text-4xl md:text-5xl text-ink-blue text-center mb-16">
+                Proof of Life
+            </h2>
+            
+            <!-- Gallery Layout -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <!-- Left: DM Screenshots -->
+                <div class="space-y-8">
+                    <h3 class="font-playfair font-bold text-2xl text-ink-blue mb-8">Raw Praise</h3>
+                    
+                    <div class="bg-candlelight-beige p-6 rounded-xl border border-forest-green/20" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"paper\" patternUnits=\"userSpaceOnUse\" width=\"100\" height=\"100\"><rect width=\"100\" height=\"100\" fill=\"%23F4EBDD\"/><path d=\"M0 0l100 100M100 0l-100 100\" stroke=\"%23E5D5C8\" stroke-width=\"0.5\" opacity=\"0.3\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23paper)\"/></svg>');">
+                        <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <p class="text-sm text-forest-green mb-2">Direct Message</p>
+                            <p class="text-ink-blue">"I literally can't believe this is my life now. I used to wake up every day feeling like I was wearing a costume. Now I wake up feeling like... me."</p>
+                        </div>
+                        <p class="text-right text-forest-green text-sm">- Sarah M., CEO</p>
+                    </div>
+                    
+                    <div class="bg-candlelight-beige p-6 rounded-xl border border-forest-green/20" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"paper\" patternUnits=\"userSpaceOnUse\" width=\"100\" height=\"100\"><rect width=\"100\" height=\"100\" fill=\"%23F4EBDD\"/><path d=\"M0 0l100 100M100 0l-100 100\" stroke=\"%23E5D5C8\" stroke-width=\"0.5\" opacity=\"0.3\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23paper)\"/></svg>');">
+                        <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <p class="text-sm text-forest-green mb-2">WhatsApp</p>
+                            <p class="text-ink-blue">"You helped me realize I wasn't broken, I was just brilliant at surviving. Now I'm learning how to thrive. Thank you for seeing me."</p>
+                        </div>
+                        <p class="text-right text-forest-green text-sm">- Alex T., Artist</p>
+                    </div>
+                    
+                    <div class="bg-candlelight-beige p-6 rounded-xl border border-forest-green/20" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"paper\" patternUnits=\"userSpaceOnUse\" width=\"100\" height=\"100\"><rect width=\"100\" height=\"100\" fill=\"%23F4EBDD\"/><path d=\"M0 0l100 100M100 0l-100 100\" stroke=\"%23E5D5C8\" stroke-width=\"0.5\" opacity=\"0.3\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23paper)\"/></svg>');">
+                        <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <p class="text-sm text-forest-green mb-2">Email</p>
+                            <p class="text-ink-blue">"I can't imagine going back to who I was before this work. The woman I am now would terrify the woman I was a year ago - and I mean that in the best possible way."</p>
+                        </div>
+                        <p class="text-right text-forest-green text-sm">- Morgan L., Teacher</p>
+                    </div>
+                </div>
+                
+                <!-- Right: Quote Cards -->
+                <div class="space-y-8">
+                    <h3 class="font-playfair font-bold text-2xl text-ink-blue mb-8">Handwritten Truths</h3>
+                    
+                    <div class="bg-candlelight-beige p-8 rounded-xl border-2 border-burnt-orange/30 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                        <p class="font-playfair text-lg italic text-ink-blue mb-4 leading-relaxed" style="font-family: 'Kalam', cursive;">
+                            "Byanca doesn't just coach you to be better. She helps you remember who you were before the world told you who to be."
+                        </p>
+                        <p class="text-forest-green font-semibold">- Rachel K.</p>
+                        <p class="text-forest-green text-sm">Executive Coach</p>
+                    </div>
+                    
+                    <div class="bg-candlelight-beige p-8 rounded-xl border-2 border-burnt-orange/30 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                        <p class="font-playfair text-lg italic text-ink-blue mb-4 leading-relaxed" style="font-family: 'Kalam', cursive;">
+                            "This work isn't just about healing. It's about coming home to yourself in a way that makes everything else make sense."
+                        </p>
+                        <p class="text-forest-green font-semibold">- Priya S.</p>
+                        <p class="text-forest-green text-sm">Therapist</p>
+                    </div>
+                    
+                    <div class="bg-candlelight-beige p-8 rounded-xl border-2 border-burnt-orange/30 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                        <p class="font-playfair text-lg italic text-ink-blue mb-4 leading-relaxed" style="font-family: 'Kalam', cursive;">
+                            "I finally understand what it means to live from my center instead of my edges. This is the most important work I've ever done."
+                        </p>
+                        <p class="text-forest-green font-semibold">- Jordan M.</p>
+                        <p class="text-forest-green text-sm">Entrepreneur</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Final CTA -->
+            <div class="text-center bg-ink-blue p-12 rounded-xl">
+                <h3 class="font-playfair font-bold text-3xl text-white mb-6">Want this to be your story?</h3>
+                <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-12 py-4 rounded-lg text-xl font-semibold transition-all duration-300 hover:transform hover:scale-105 w-full md:w-auto">
+                    Book Discovery Call
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="py-20 bg-candlelight-beige">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-playfair font-bold text-4xl md:text-5xl text-ink-blue text-center mb-16">
+                Open Door
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="font-playfair font-bold text-2xl text-ink-blue mb-8">Ready to Begin?</h3>
+                    
+                    <!-- Google Form Integration Placeholder -->
+                    <form class="space-y-6" data-implementation="Integrate with Google Forms API">
+                        <div>
+                            <label for="name" class="block text-forest-green font-semibold mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-forest-green/30 bg-white focus:ring-2 focus:ring-burnt-orange focus:border-transparent transition-all duration-300">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-forest-green font-semibold mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-forest-green/30 bg-white focus:ring-2 focus:ring-burnt-orange focus:border-transparent transition-all duration-300">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-forest-green font-semibold mb-2">What brings you here?</label>
+                            <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 rounded-lg border border-forest-green/30 bg-white focus:ring-2 focus:ring-burnt-orange focus:border-transparent transition-all duration-300 resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:transform hover:scale-105">
+                            I'm ready for more
+                        </button>
+                    </form>
+                    
+                    <!-- Social Icons -->
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-ink-blue rounded-full flex items-center justify-center text-white hover:bg-burnt-orange transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-ink-blue rounded-full flex items-center justify-center text-white hover:bg-burnt-orange transition-colors duration-300">
+                            <i class="fab fa-threads text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Scheduling -->
+                <div>
+                    <h3 class="font-playfair font-bold text-2xl text-ink-blue mb-8">Book Your Discovery Call</h3>
+                    
+                    <!-- Calendly Widget Placeholder -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg min-h-96 flex items-center justify-center" data-implementation="Embed Calendly widget with burnt orange styling">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-burnt-orange rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+                                <i class="fas fa-calendar-alt text-white text-2xl"></i>
+                            </div>
+                            <p class="font-playfair text-xl text-ink-blue mb-4">Schedule Your Call</p>
+                            <p class="text-forest-green mb-6">Choose a time that works for your transformation</p>
+                            <button class="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                                View Available Times
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-white rounded-lg border border-forest-green/20">
+                        <h4 class="font-playfair font-bold text-lg text-ink-blue mb-3">What to Expect:</h4>
+                        <ul class="space-y-2 text-forest-green">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-burnt-orange mt-1 mr-3"></i>
+                                <span>45-minute deep-dive conversation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-burnt-orange mt-1 mr-3"></i>
+                                <span>Explore what's calling you forward</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-burnt-orange mt-1 mr-3"></i>
+                                <span>Discover if we're aligned for the journey</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ink-blue text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-playfair font-bold text-xl mb-4">Binxthinxx</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Identity Reclamation Platform for high-functioning women ready to live from authenticity instead of performance.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-white/80 hover:text-burnt-orange transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-white/80 hover:text-burnt-orange transition-colors">About</a></li>
+                        <li><a href="#services" class="text-white/80 hover:text-burnt-orange transition-colors">Services</a></li>
+                        <li><a href="#testimonials" class="text-white/80 hover:text-burnt-orange transition-colors">Testimonials</a></li>
+                        <li><a href="#contact" class="text-white/80 hover:text-burnt-orange transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-burnt-orange transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-burnt-orange transition-colors">
+                            <i class="fab fa-threads"></i>
+                        </a>
+                    </div>
+                    <p class="text-white/60 text-sm">© 2024 Binxthinxx. All rights reserved.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-white/60">
+                    Trauma-Informed • ICF Certified • 10+ Years Experience
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu if open
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Auto-sliding testimonial carousel
+            let currentSlide = 0;
+            const slider = document.getElementById('testimonial-slider');
+            const totalSlides = 3;
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                const translateX = -currentSlide * (100 / totalSlides);
+                slider.style.transform = `translateX(${translateX}%)`;
+                
+                // Update dots
+                const dots = document.querySelectorAll('.flex.justify-center button');
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.className = 'w-3 h-3 bg-burnt-orange rounded-full opacity-100';
+                    } else {
+                        dot.className = 'w-3 h-3 bg-forest-green/30 rounded-full opacity-50';
+                    }
+                });
+            }
+            
+            // Auto-advance every 5 seconds
+            setInterval(nextSlide, 5000);
+            
+            // Add click handlers to dots
+            document.querySelectorAll('.flex.justify-center button').forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    currentSlide = index;
+                    const translateX = -currentSlide * (100 / totalSlides);
+                    slider.style.transform = `translateX(${translateX}%)`;
+                    
+                    // Update dots
+                    document.querySelectorAll('.flex.justify-center button').forEach((d, i) => {
+                        if (i === currentSlide) {
+                            d.className = 'w-3 h-3 bg-burnt-orange rounded-full opacity-100';
+                        } else {
+                            d.className = 'w-3 h-3 bg-forest-green/30 rounded-full opacity-50';
+                        }
+                    });
+                });
+            });
+            
+            // Form validation
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Basic validation
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    
+                    if (!name || !email || !message) {
+                        alert('Please fill in all fields.');
+                        return;
+                    }
+                    
+                    if (!email.includes('@')) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+                    
+                    // TODO: Integrate with Google Forms API
+                    alert('Thank you for your message! We\'ll be in touch soon.');
+                    form.reset();
+                });
+            }
+            
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.service-card, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        })();
+    </script>
+</body>
+</html>

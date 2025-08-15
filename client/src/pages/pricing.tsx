@@ -108,15 +108,13 @@ export default function Pricing() {
   });
 
   useEffect(() => {
-    const urlParts = location.split('?');
-    if (urlParts.length > 1) {
-      const params = new URLSearchParams(urlParts[1]);
-      const serviceParam = params.get('service');
-      if (serviceParam && services[serviceParam as keyof typeof services]) {
-        setSelectedService(serviceParam);
-      }
+    // Get the service parameter directly from window.location
+    const params = new URLSearchParams(window.location.search);
+    const serviceParam = params.get('service');
+    if (serviceParam && services[serviceParam as keyof typeof services]) {
+      setSelectedService(serviceParam);
     }
-  }, [location]);
+  }, []);
 
   const service = selectedService ? services[selectedService as keyof typeof services] : null;
 
@@ -136,16 +134,16 @@ export default function Pricing() {
   };
 
   const handleBack = () => {
-    setLocation('/services');
+    setLocation('/booking');
   };
 
   if (!service) {
     return (
       <div className="min-h-screen bg-candlelight-beige flex items-center justify-center px-6">
         <div className="text-center">
-          <h1 className="font-serif text-3xl text-ink-blue mb-4">Service Not Found</h1>
-          <p className="text-forest-green mb-6">Please select a service from our offerings.</p>
-          <Button onClick={() => setLocation('/services')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-white">
+          <h1 className="font-serif text-3xl text-black dark:text-white mb-4">Service Not Found</h1>
+          <p className="text-black dark:text-white mb-6">Please select a service from our offerings.</p>
+          <Button onClick={() => setLocation('/booking')} className="bg-burnt-orange hover:bg-burnt-orange/90 text-black dark:text-white">
             View Services
           </Button>
         </div>
@@ -167,7 +165,7 @@ export default function Pricing() {
             className="mb-6 border-forest-green text-forest-green hover:bg-forest-green hover:text-white"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Services
+            Back to Booking
           </Button>
         </div>
       </div>
@@ -181,9 +179,9 @@ export default function Pricing() {
           >
             {/* Service Details Card */}
             <Card className="mb-8">
-              <CardHeader className="bg-gradient-to-r from-burnt-orange to-faded-rust text-white">
-                <CardTitle className="font-serif text-3xl">{service.name}</CardTitle>
-                <CardDescription className="text-white/90 text-lg">
+              <CardHeader className="bg-gradient-to-r from-burnt-orange to-faded-rust text-black dark:text-white">
+                <CardTitle className="font-serif text-3xl text-black dark:text-white">{service.name}</CardTitle>
+                <CardDescription className="text-black dark:text-white text-lg">
                   {service.description}
                 </CardDescription>
               </CardHeader>
@@ -192,28 +190,28 @@ export default function Pricing() {
                   <div className="flex items-center gap-3">
                     <DollarSign className="w-6 h-6 text-burnt-orange" />
                     <div>
-                      <div className="font-bold text-2xl text-ink-blue">${service.price.toLocaleString()}</div>
-                      <div className="text-forest-green text-sm">Investment</div>
+                      <div className="font-bold text-2xl text-black dark:text-white">${service.price.toLocaleString()}</div>
+                      <div className="text-black dark:text-white text-sm">Investment</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="w-6 h-6 text-burnt-orange" />
                     <div>
-                      <div className="font-bold text-xl text-ink-blue">{service.duration}</div>
-                      <div className="text-forest-green text-sm">Duration</div>
+                      <div className="font-bold text-2xl text-black dark:text-white">{service.duration}</div>
+                      <div className="text-black dark:text-white text-sm">Duration</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Calendar className="w-6 h-6 text-burnt-orange" />
                     <div>
-                      <div className="font-bold text-xl text-ink-blue">Premium</div>
-                      <div className="text-forest-green text-sm">Experience</div>
+                      <div className="font-bold text-xl text-black dark:text-white">Premium</div>
+                      <div className="text-black dark:text-white text-sm">Experience</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="mb-8">
-                  <h3 className="font-serif text-xl text-ink-blue mb-4">What's Included:</h3>
+                  <h3 className="font-serif text-xl text-black dark:text-white mb-4">What's Included:</h3>
                   <ul className="grid md:grid-cols-2 gap-2">
                     {service.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-3 text-forest-green">
@@ -229,7 +227,7 @@ export default function Pricing() {
             {/* Booking Form */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-serif text-2xl text-ink-blue">Schedule Your Session</CardTitle>
+                <CardTitle className="font-serif text-2xl text-black dark:text-white">Schedule Your Session</CardTitle>
                 <CardDescription>
                   Choose your preferred date and time to begin your transformation journey.
                 </CardDescription>
@@ -369,7 +367,7 @@ export default function Pricing() {
 
                       <Button 
                         type="submit" 
-                        className="w-full py-6 bg-burnt-orange hover:bg-burnt-orange/90 text-white text-lg font-medium"
+                        className="w-full py-6 bg-burnt-orange hover:bg-burnt-orange/90 text-black dark:text-white text-lg font-medium"
                       >
                         Proceed to Payment - ${service.price.toLocaleString()}
                       </Button>

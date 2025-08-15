@@ -90,7 +90,7 @@ export default function BookingCoaching() {
             className="mb-6 border-forest-green text-forest-green hover:bg-forest-green hover:text-white"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Services
+            <span className="text-white">Back to Services</span>
           </Button>
         </div>
       </div>
@@ -103,9 +103,9 @@ export default function BookingCoaching() {
             transition={{ duration: 0.6 }}
           >
             <Card className="mb-8">
-              <CardHeader className="bg-gradient-to-r from-burnt-orange to-faded-rust text-white">
-                <CardTitle className="font-serif text-3xl">{service.name}</CardTitle>
-                <CardDescription className="text-white/90 text-lg">
+              <CardHeader className="bg-gradient-to-r from-burnt-orange to-faded-rust text-black dark:text-white">
+                <CardTitle className="font-serif text-3xl text-black dark:text-white">{service.name}</CardTitle>
+                <CardDescription className="text-black/90 dark:text-white/90 text-lg">
                   {service.description}
                 </CardDescription>
               </CardHeader>
@@ -114,31 +114,31 @@ export default function BookingCoaching() {
                   <div className="flex items-center gap-3">
                     <DollarSign className="w-6 h-6 text-burnt-orange" />
                     <div>
-                      <div className="font-bold text-2xl text-ink-blue">${service.price.toLocaleString()}</div>
-                      <div className="text-forest-green text-sm">Investment</div>
+                      <div className="font-bold text-2xl text-black dark:text-white">${service.price.toLocaleString()}</div>
+                      <div className="text-black dark:text-white text-sm">Investment</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="w-6 h-6 text-burnt-orange" />
                     <div>
-                      <div className="font-bold text-xl text-ink-blue">{service.duration}</div>
-                      <div className="text-forest-green text-sm">Duration</div>
+                      <div className="font-bold text-xl text-black dark:text-white">{service.duration}</div>
+                      <div className="text-black dark:text-white text-sm">Duration</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Calendar className="w-6 h-6 text-burnt-orange" />
                     <div>
-                      <div className="font-bold text-xl text-ink-blue">Premium</div>
-                      <div className="text-forest-green text-sm">Experience</div>
+                      <div className="font-bold text-xl text-black dark:text-white">Premium</div>
+                      <div className="text-black dark:text-white text-sm">Experience</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="mb-8">
-                  <h3 className="font-serif text-xl text-ink-blue mb-4">What's Included:</h3>
+                  <h3 className="font-serif text-xl text-black dark:text-white mb-4">What's Included:</h3>
                   <ul className="space-y-2">
                     {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3 text-forest-green">
+                      <li key={index} className="flex items-start gap-3 text-black dark:text-white">
                         <CheckCircle className="w-4 h-4 text-burnt-orange mt-1 flex-shrink-0" />
                         <span className="text-sm leading-relaxed">{feature}</span>
                       </li>

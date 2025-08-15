@@ -43,7 +43,7 @@ export default function Testimonials() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="font-playfair font-bold text-4xl md:text-5xl text-ink-blue text-center mb-16">
+        <h1 className="font-playfair font-bold text-4xl md:text-5xl text-black dark:text-white text-center mb-16">
           Proof of Life
         </h1>
 
@@ -51,33 +51,33 @@ export default function Testimonials() {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Left: DM Screenshots */}
           <div className="space-y-8">
-            <h2 className="font-playfair font-bold text-2xl text-ink-blue mb-8">Raw Praise</h2>
+            <h2 className="font-playfair font-bold text-2xl text-black dark:text-white mb-8">Raw Praise</h2>
 
             {dmTestimonials.map((testimonial, index) => (
               <div key={index} className="paper-texture p-6 rounded-xl border border-forest-green/20">
                 <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
-                  <p className="text-sm text-forest-green mb-2">{testimonial.platform}</p>
-                  <p className="text-ink-blue">"{testimonial.message}"</p>
+                  <p className="text-sm text-black dark:text-white mb-2">{testimonial.platform}</p>
+                  <p className="text-black dark:text-white">"{testimonial.message}"</p>
                 </div>
-                <p className="text-right text-forest-green text-sm">- {testimonial.author}</p>
+                <p className="text-right text-black dark:text-white text-sm">- {testimonial.author}</p>
               </div>
             ))}
           </div>
 
           {/* Right: Quote Cards */}
           <div className="space-y-8">
-            <h2 className="font-playfair font-bold text-2xl text-ink-blue mb-8">Handwritten Truths</h2>
+            <h2 className="font-playfair font-bold text-2xl text-black dark:text-white mb-8">Handwritten Truths</h2>
 
             {handwrittenQuotes.map((quote, index) => (
               <div 
                 key={index}
                 className={`bg-candlelight-beige p-8 rounded-xl border-2 border-burnt-orange/30 transform ${quote.rotation} hover:rotate-0 transition-transform duration-300`}
               >
-                <p className="font-playfair text-lg italic text-ink-blue mb-4 leading-relaxed">
+                <p className="font-playfair text-lg italic text-black dark:text-white mb-4 leading-relaxed">
                   "{quote.quote}"
                 </p>
-                <p className="text-forest-green font-semibold">- {quote.author}</p>
-                <p className="text-forest-green text-sm">{quote.role}</p>
+                <p className="text-black dark:text-white font-semibold">- {quote.author}</p>
+                <p className="text-black dark:text-white text-sm">{quote.role}</p>
               </div>
             ))}
           </div>
@@ -85,9 +85,9 @@ export default function Testimonials() {
 
         {/* Final CTA */}
         <div className="text-center bg-ink-blue p-12 rounded-xl">
-          <h2 className="font-playfair font-bold text-3xl text-white mb-6">Want this to be your story?</h2>
+          <h2 className="font-playfair font-bold text-3xl text-black dark:text-white mb-6">Want this to be your story?</h2>
           <Link href="/contact">
-            <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-white px-12 py-4 rounded-lg text-xl font-semibold transition-all duration-300 hover:transform hover:scale-105 w-full md:w-auto">
+            <button className="bg-burnt-orange hover:bg-burnt-orange/90 text-black dark:text-white px-12 py-4 rounded-lg text-xl font-semibold transition-all duration-300 hover:transform hover:scale-105 w-full md:w-auto">
               Book Discovery Call
             </button>
           </Link>
